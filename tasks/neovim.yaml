@@ -42,7 +42,7 @@
 - name: create pyenvs for neovim
   command: >
     /usr/bin/zsh -ic
-    'pyenv virtualenv -f {{ item.value | quote }} {{ item.key | quote }}'
+    'pyenv virtualenv {{ item.value | quote }} {{ item.key | quote }} || true'
   with_dict:
     neovim2: "{{ pyenv_python2 }}"
     neovim3: "{{ pyenv_python3 }}"
@@ -63,7 +63,7 @@
 
 - name: install neovim package into pythons
   command: >
-    /usr/bin/zsh -ic 'pyenv activate {{ item }} && pip install neovim'
+    /usr/bin/zsh -ic 'pyenv activate {{ item }} && pip install -U neovim'
   with_items:
   - neovim2
   - neovim3
