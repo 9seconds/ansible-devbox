@@ -59,9 +59,8 @@
 
 - name: pull images
   become: true
-  command: docker pull {{ item | quote }}
-  args:
-    warn: no
+  docker_image:
+    pull: "{{ item }}"
   with_items: "{{ docker_images }}"
 
 - name: clean docker garbage

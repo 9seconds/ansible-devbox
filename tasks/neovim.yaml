@@ -28,20 +28,8 @@
     path: "{{ item }}"
     state: directory
   with_items:
-  - ~/.vim
   - ~/.vim/autoload
-  - ~/.config/nvim
-  - ~/.local
-  - ~/.local/share
-  - ~/.local/share/nvim
-  - ~/.local/share/nvim/site
   - ~/.local/share/nvim/site/autoload
-
-- name: symlink vimrc
-  file:
-    src: ~/.vimrc
-    dest: ~/.config/nvim/init.vim
-    state: link
 
 - name: download vim-plug
   get_url:
