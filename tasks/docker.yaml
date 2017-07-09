@@ -60,7 +60,8 @@
 - name: pull images
   become: true
   docker_image:
-    pull: "{{ item }}"
+    name: "{{ item }}"
+    pull: yes
   with_items: "{{ docker_images }}"
 
 - name: clean docker garbage
