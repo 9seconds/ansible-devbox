@@ -1,2 +1,4 @@
 # ansible-devbox
-Devbox role compatible with Ansible Galaxy
+
+Development environment I generally use. This role is compatible with
+Ansible Galaxy.
