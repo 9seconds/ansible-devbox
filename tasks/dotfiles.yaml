@@ -13,3 +13,6 @@
   args:
     chdir: ~/.dotfiles
   with_items: "{{ stow_dotfiles }}"
+
+- name: install tmux terminal type
+  command: tic ~/.dotfiles/tmux-italics.terminfo

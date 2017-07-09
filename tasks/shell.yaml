@@ -13,16 +13,3 @@
   with_items:
   - update
   - cleanup
-
-- name: copy tmux italic
-  copy:
-    src: tmux256-colors-italic
-    dest: /tmp/tmux256-colors-italic
-
-- name: install tmux italic
-  command: tic /tmp/tmux256-colors-italic
-
-- name: remove tmux italic temporary file
-  file:
-    path: /tmp/tmux256-colors-italic
-    state: absent
