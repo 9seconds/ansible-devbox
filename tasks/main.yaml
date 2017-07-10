@@ -11,6 +11,7 @@
 - include: ./docker.yaml
 - include: ./dotfiles.yaml
 - include: ./shell.yaml
+- include: ./fzf.yaml
 - include: ./nodejs.yaml
 - include: ./pyenv.yaml
 - include: ./neovim.yaml

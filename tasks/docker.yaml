@@ -62,10 +62,5 @@
   docker_image:
     name: "{{ item }}"
     pull: yes
-  with_items: "{{ docker_images }}"
-
-- name: clean docker garbage
-  become: true
-  command: docker system prune -f
-  args:
-    warn: no
+  with_items: "{{ mandatory_docker_images }}"
+  notify: clean docker garbage

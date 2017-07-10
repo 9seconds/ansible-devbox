@@ -33,6 +33,6 @@ pyenv_python3: 3.6.1
 docker_bip: 10.201.0.2/24
 docker_storage_driver: overlay2
 
-docker_images:
+mandatory_docker_images:
 - ubuntu:xenial
 - ubuntu:latest

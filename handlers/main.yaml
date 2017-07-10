@@ -16,3 +16,9 @@
     name: docker
     state: restarted
     enabled: yes
+
+- name: clean docker garbage
+  become: true
+  command: docker system prune -f
+  args:
+    warn: no
