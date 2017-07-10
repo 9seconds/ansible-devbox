@@ -10,6 +10,7 @@
 - include: ./pip.yaml
 - include: ./docker.yaml
 - include: ./dotfiles.yaml
+- include: ./tmux.yaml
 - include: ./shell.yaml
 - include: ./fzf.yaml
 - include: ./nodejs.yaml

@@ -1,0 +1,24 @@
+---
+# vim: set ft=ansible:
+
+
+- name: ensure tmux plugin manager directory is created
+  file:
+    path: ~/.tmux/plugins
+    state: directory
+
+- name: install tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+    version: master
+    clone: yes
+
+- name: manage plugins with tmux plugin manager
+  command: "./{{ item }}"
+  args:
+    chdir: ~/.tmux/plugins/tpm/bin
+  with_items:
+  - install_plugins
+  - update_plugins all
+  - clean_plugins
