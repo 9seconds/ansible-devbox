@@ -18,3 +18,11 @@
 - name: install pyenv pythons
   command: /usr/bin/zsh -ic 'pyenv install -s {{ item | quote }}'
   with_items: "{{ pyenv_pythons }}"
+
+- name: install default packages
+  template:
+    src: default-packages.j2
+    dest: ~/.pyenv/default-packages
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
