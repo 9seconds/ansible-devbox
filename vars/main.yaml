@@ -48,7 +48,10 @@ apt_mandatory_packages:
 - ncurses-term
 - openssh-client
 - par
+- pbzip2
+- pigz
 - pkg-config
+- pxz
 - python
 - python3
 - python3-dev
