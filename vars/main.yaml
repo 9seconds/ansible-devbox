@@ -111,6 +111,7 @@ stow_dotfiles:
 - ctags
 - git
 - nodejs
+- pip
 - python
 - scripts
 - tmux
