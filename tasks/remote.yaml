@@ -1,0 +1,12 @@
+---
+# vim: set ft=ansible:
+
+
+- name: install teleconsole
+  become: true
+  unarchive:
+    src: "{{ teleconsole_url }}"
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
