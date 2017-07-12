@@ -42,7 +42,10 @@
 - name: create pyenvs for neovim
   command: >
     /usr/bin/zsh -ic
-    'pyenv virtualenv {{ item.value | quote }} {{ item.key | quote }} || true'
+    "pyenv virtualenv {{ item.value | quote }} {{ item.key | quote }}"
+  register: pyenv_create
+  failed_when: >
+    pyenv_create.rc != 0 and 'already exists' not in pyenv_create.stderr
   with_dict:
     neovim2: "{{ pyenv_python2 }}"
     neovim3: "{{ pyenv_python3 }}"
