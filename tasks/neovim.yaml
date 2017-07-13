@@ -64,8 +64,10 @@
   - 3
 
 - name: install neovim package into pythons
-  command: >
-    /usr/bin/zsh -ic 'pyenv activate {{ item }} && pip install -U neovim'
+  pip:
+    name: neovim
+    state: latest
+    virtualenv: "~/.pyenv/versions/{{ item }}"
   with_items:
   - neovim2
   - neovim3
