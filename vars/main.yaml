@@ -129,8 +129,8 @@ pip3_packages:
   rstcheck: latest
 
 pip2_packages:
-  "docker-compose": latest
-  "docker-py": latest
+  docker-compose: latest
+  docker: latest
   tmuxp: latest
 
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
