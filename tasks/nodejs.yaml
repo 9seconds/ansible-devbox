@@ -35,6 +35,7 @@
   with_items:
   - nodejs
   - yarn
+  notify: apt changed
 
 - name: install ternjs
   npm:

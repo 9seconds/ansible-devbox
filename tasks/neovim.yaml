@@ -15,6 +15,7 @@
   apt:
     name: neovim
     state: present
+  notify: apt changed
 
 - name: install support for ruby plugins
   become: true

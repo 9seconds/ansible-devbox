@@ -2,6 +2,11 @@
 # vim: set ft=ansible:
 
 
+- name: create .tmuxp directory
+  file:
+    path: ~/.tmuxp
+    state: directory
+
 - name: ensure tmux plugin manager directory is created
   file:
     path: ~/.tmux/plugins

@@ -17,8 +17,3 @@
     state: "{{ item.value }}"
     executable: pip3
   with_dict: "{{ pip3_packages }}"
-
-- name: create .tmuxp directory
-  file:
-    path: ~/.tmuxp
-    state: directory

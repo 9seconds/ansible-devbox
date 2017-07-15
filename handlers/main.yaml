@@ -2,6 +2,16 @@
 # vim: set ft=ansible:
 
 
+- name: apt autoremove
+  become: true
+  command: apt autoremove --yes --purge
+  listen: apt changed
+
+- name: apt clean
+  become: true
+  command: apt clean
+  listen: apt changed
+
 - name: restart timesyncd
   become: true
   systemd:

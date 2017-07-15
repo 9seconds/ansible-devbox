@@ -42,7 +42,9 @@
   apt:
     name: docker-ce
     state: present
-  notify: restart docker
+  notify:
+  - restart docker
+  - apt changed
 
 - name: add docker group
   become: true
