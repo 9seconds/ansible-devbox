@@ -29,11 +29,13 @@
   become: true
   command: timedatectl set-timezone {{ ntp_timezone | quote }}
   when: (etc_timezone | failed) or (etc_timezone.stdout | trim) != ntp_timezone
+  notify: restart timesyncd
 
 - name: set ntp
   become: true
   command: timedatectl set-ntp true
   when: (ntp_status | failed) or (ntp_status.stdout | trim | lower) != 'yes'
+  notify: restart timesyncd
 
 - name: ensure timesyncd.d directory created
   become: true
