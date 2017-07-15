@@ -37,8 +37,9 @@
   - yarn
   notify: apt changed
 
-- name: install ternjs
+- name: install npm packages
   npm:
-    name: tern
+    name: "{{ item }}"
     state: latest
     global: yes
+  with_items: "{{ npm_mandatory_packages }}"

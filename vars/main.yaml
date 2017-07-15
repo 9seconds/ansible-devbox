@@ -85,6 +85,13 @@ apt_mandatory_packages:
 - zlib1g-dev
 - zsh
 
+npm_mandatory_packages:
+- eslint_d
+- markdownlint-cli
+- sass-lint
+- tern
+- write-good
+
 locales:
 - en_US.UTF-8
 - ru_RU.UTF-8
@@ -118,10 +125,12 @@ stow_dotfiles:
 - vim
 - zsh
 
-pip3_packages: {}
+pip3_packages:
+  rstcheck: latest
+
 pip2_packages:
-  tmuxp: latest
   "docker-compose": latest
   "docker-py": latest
+  tmuxp: latest
 
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
