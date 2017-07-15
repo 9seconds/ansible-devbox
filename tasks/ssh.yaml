@@ -2,6 +2,16 @@
 # vim: set ft=ansible:
 
 
+- name: create ssh config.d directory
+  file:
+    path: ~/.ssh/config.d
+    state: directory
+
+- name: create ssh socket directory
+  file:
+    path: ~/.ssh/sockets
+    state: directory
+
 - name: copy ssh keys from the local machine
   copy:
     src: "~/.ssh/{{ item }}"
@@ -12,3 +22,12 @@
   with_items:
   - id_rsa
   - id_rsa.pub
+
+- name: copy common part of ssh config
+  template:
+    src: ssh-config-common.j2
+    dest: ~/.ssh/config.d/00-common
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
+  notify: ssh config parts

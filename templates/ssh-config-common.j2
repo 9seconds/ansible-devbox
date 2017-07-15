@@ -1,0 +1,17 @@
+{{ ansible_managed | comment }}
+
+Host *
+    Ciphers             chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+    CompressionLevel    6
+    Compression         yes
+    ControlMaster       auto
+    ControlPath         ~/.ssh/sockets/%r@%h-%p
+    ControlPersist      600
+    ForwardAgent        yes
+    ForwardX11          no
+    ForwardX11Trusted   no
+    IdentitiesOnly      yes
+    Protocol            2
+    ServerAliveCountMax 2
+    ServerAliveInterval 5
+    TCPKeepAlive        yes

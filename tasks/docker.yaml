@@ -63,4 +63,4 @@
     name: "{{ item }}"
     pull: yes
   with_items: "{{ mandatory_docker_images }}"
-  notify: clean docker garbage
+  notify: docker new images

@@ -1,6 +1,7 @@
 ---
 # vim: set ft=ansible:
 
+
 - name: restart timesyncd
   become: true
   systemd:
@@ -17,8 +18,16 @@
     state: restarted
     enabled: yes
 
-- name: clean docker garbage
+- name: docker system prune
   become: true
   command: docker system prune -f
   args:
     warn: no
+  listen: docker new images
+
+- name: generate ssh config
+  assemble:
+    src: ~/.ssh/config.d
+    dest: ~/.ssh/config
+    delimiter: "\n\n"
+  listen: ssh config parts
