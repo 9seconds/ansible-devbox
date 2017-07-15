@@ -43,3 +43,25 @@
     state: latest
     global: yes
   with_items: "{{ npm_mandatory_packages }}"
+
+- name: get peer dependencies for airbnb style
+  command: npm info --json eslint-config-airbnb@latest peerDependencies
+  args:
+    warn: no
+  changed_when: false
+  register: eslint_peer_deps
+
+- name: install airbnb javascript style
+  npm:
+    name: "{{ item.key }}"
+    global: yes
+    version: "{{ item.value }}"
+  with_dict: "{{ eslint_peer_deps.stdout | from_json | combine({'eslint-config-airbnb': 'latest'}) }}"
+
+- name: install eslintrc global config
+  copy:
+    src: eslintrc.yml
+    dest: ~/.eslintrc.yml
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
