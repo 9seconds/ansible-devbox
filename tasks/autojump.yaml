@@ -1,0 +1,27 @@
+---
+# vim: set ft=ansible:
+
+
+- name: create systemd user directory
+  file:
+    path: ~/.config/systemd/user
+    state: directory
+
+- name: create autojump timer
+  template:
+    src: "{{ item }}.j2"
+    dest: "~/.config/systemd/user/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
+  with_items:
+  - autojump.service
+  - autojump.timer
+
+- name: activate autojump timer
+  systemd:
+    name: autojump.timer
+    daemon_reload: yes
+    user: yes
+    enabled: yes
+    state: started

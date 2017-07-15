@@ -1,0 +1,10 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=autojump - purge old entries
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/autojump --purge
+PrivateTmp=true
+CPUQuota=60%

@@ -16,4 +16,5 @@
 - include: ./nodejs.yaml
 - include: ./pyenv.yaml
 - include: ./neovim.yaml
+- include: ./autojump.yaml
 - include: ./remote.yaml
