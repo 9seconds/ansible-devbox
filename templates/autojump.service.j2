@@ -5,6 +5,6 @@ Description=autojump - purge old entries
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/autojump --purge
+ExecStart=/usr/bin/zsh -ic 'autojump --purge'
 PrivateTmp=true
 CPUQuota=60%
