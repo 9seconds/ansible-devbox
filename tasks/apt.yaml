@@ -46,5 +46,5 @@
   apt:
     deb: "{{ tmux_deb_link }}"
     state: present
-  when: "{{ tmux_version.stdout | version_compare('2.2', '<') }}"
+  when: tmux_version.stdout | version_compare('2.2', '<')
   notify: apt changed
