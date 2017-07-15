@@ -76,5 +76,6 @@
 - name: install neovim plugins
   command: nvim --headless -c {{ item | quote }} -c 'qall!'
   with_items:
+  - PlugUpgrade
   - PlugUpdate
   - UpdateRemotePlugins
