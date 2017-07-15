@@ -36,3 +36,7 @@ docker_storage_driver: overlay2
 mandatory_docker_images:
 - ubuntu:xenial
 - ubuntu:latest
+
+known_ssh_hosts:
+- github.com
+- bitbucket.org

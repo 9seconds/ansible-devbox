@@ -26,8 +26,5 @@
   listen: docker new images
 
 - name: generate ssh config
-  assemble:
-    src: ~/.ssh/config.d
-    dest: ~/.ssh/config
-    delimiter: "\n\n"
+  include: ./ssh.yaml
   listen: ssh config parts
