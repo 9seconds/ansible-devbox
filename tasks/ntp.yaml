@@ -13,13 +13,27 @@
   - ntpdate
   notify: apt changed
 
+- name: find out current timezone
+  command: cat /etc/timezone
+  failed_when: false
+  changed_when: false
+  register: etc_timezone
+
+- name: find out current ntp settings
+  shell: timedatectl status | grep -E ^NTP | cut -f3- -d' '
+  failed_when: false
+  changed_when: false
+  register: ntp_status
+
 - name: set timezone
   become: true
   command: timedatectl set-timezone {{ ntp_timezone | quote }}
+  when: (etc_timezone | failed) or (etc_timezone.stdout | trim) != ntp_timezone
 
 - name: set ntp
   become: true
   command: timedatectl set-ntp true
+  when: (ntp_status | failed) or (ntp_status.stdout | trim | lower) != 'yes'
 
 - name: ensure timesyncd.d directory created
   become: true
