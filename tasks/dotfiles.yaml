@@ -16,3 +16,5 @@
 
 - name: install tmux terminal type
   command: tic ~/.dotfiles/tmux-italics.terminfo
+  args:
+    creates: /usr/share/terminfo/t/tmux-256color
