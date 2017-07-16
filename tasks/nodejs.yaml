@@ -59,8 +59,8 @@
   with_dict: "{{ eslint_peer_deps.stdout | from_json | combine({'eslint-config-airbnb': 'latest'}) }}"
 
 - name: install eslintrc global config
-  copy:
-    src: eslintrc.yml
+  template:
+    src: eslintrc.yml.j2
     dest: ~/.eslintrc.yml
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
