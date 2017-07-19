@@ -2,7 +2,7 @@
 # vim: set ft=ansible:
 
 
-- name: install docker dependencies
+- name: install docker dependencies for distributions older than xenial
   become: true
   apt:
     name: "{{ item }}"
@@ -10,6 +10,7 @@
   with_items:
   - linux-image-extra-virtual
   - "linux-image-extra-{{ ansible_kernel }}"
+  when: ansible_distribution_version | version_compare("16.04", "<")
 
 - name: install docker key
   become: true
