@@ -86,7 +86,7 @@ apt_mandatory_packages:
 - zsh
 
 npm_mandatory_packages:
-- eslint_d
+- eslint
 - markdownlint-cli
 - sass-lint
 - tern
