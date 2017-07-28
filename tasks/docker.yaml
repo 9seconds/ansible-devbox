@@ -65,8 +65,6 @@
 
 - name: pull images
   become: true
-  docker_image:
-    name: "{{ item }}"
-    pull: yes
+  command: docker pull {{ item | quote }}
   with_items: "{{ mandatory_docker_images }}"
   notify: docker new images
