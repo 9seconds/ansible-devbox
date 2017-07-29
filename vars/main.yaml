@@ -117,6 +117,7 @@ stow_dotfiles:
 - aria2
 - ctags
 - git
+- httpie
 - nodejs
 - pip
 - python
