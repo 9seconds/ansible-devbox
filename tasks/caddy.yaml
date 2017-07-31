@@ -1,0 +1,41 @@
+---
+# vim: set ft=ansible:
+
+
+- name: install caddy
+  become: true
+  unarchive:
+    src: 'https://caddyserver.com/download/linux/amd64?plugins=http.cors'
+    dest: /usr/local/bin
+    remote_src: true
+    mode: 0755
+
+- name: create config directory
+  become: true
+  file:
+    path: /etc/caddy/config.d
+    state: directory
+
+- name: create user systemd config directory
+  file:
+    path: ~/.config/systemd/user
+    state: directory
+
+- name: install systemd unit
+  template:
+    src: caddy.service.j2
+    dest: ~/.config/systemd/user/caddy.service
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
+  notify: restart caddy
+
+- name: install caddy global config
+  become: true
+  template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/config
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
+  notify: restart caddy

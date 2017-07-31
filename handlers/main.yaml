@@ -67,3 +67,12 @@
   args:
     chdir: ~/.ssh
   listen: ssh config parts
+
+- name: restart caddy server
+  systemd:
+    name: caddy
+    user: yes
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+  listen: restart caddy
