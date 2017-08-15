@@ -21,6 +21,13 @@
   with_items: "{{ apt_packages_to_remove }}"
   notify: apt changed
 
+- name: install HWE stack
+  become: true
+  apt:
+    name: "linux-generic-hwe-{{ ansible_distribution_version }}"
+    state: present
+  notify: apt changed
+
 - name: upgrade apt packages
   become: true
   apt:
