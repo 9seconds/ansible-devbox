@@ -67,4 +67,7 @@
   become: true
   command: docker pull {{ item | quote }}
   with_items: "{{ mandatory_docker_images }}"
+  register: docker_pull_result
+  changed_when: >
+    not (docker_pull_result.stdout_lines | last).startswith("Status: Image is up to date")
   notify: docker new images
