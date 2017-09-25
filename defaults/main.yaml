@@ -40,5 +40,3 @@ mandatory_docker_images:
 known_ssh_hosts:
 - github.com
 - bitbucket.org
-
-caddy_port: 10001
