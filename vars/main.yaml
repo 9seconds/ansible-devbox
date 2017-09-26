@@ -131,6 +131,7 @@ pip3_packages:
   rstcheck: latest
   httpie: latest
   http-prompt: latest
+  proselint: latest
 
 pip2_packages:
   docker-compose: latest
