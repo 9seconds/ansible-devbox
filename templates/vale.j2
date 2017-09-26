@@ -1,8 +1,0 @@
-# vim: set ft=toml:
-{{ ansible_managed | comment }}
-
-StylesPath = {{ "%s/.valestyles" | format(ansible_env.HOME) | quote }}
-MinAlertLevel = suggestion
-
-[*]
-BasedOnStyles = vale, {{ vale.rules.keys() | join(", ") }}

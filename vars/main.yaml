@@ -137,9 +137,3 @@ pip2_packages:
   tmuxp: latest
 
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
-
-vale:
-  url: https://github.com/ValeLint/vale/releases/download/0.9.0/vale_0.9.0_Linux_64-bit.tar.gz
-  rules:
-    18F: https://github.com/ValeLint/docs/raw/master/styles/18F.zip
-    proselint: https://github.com/ValeLint/docs/raw/master/styles/proselint.zip
