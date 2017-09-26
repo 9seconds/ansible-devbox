@@ -18,3 +18,4 @@
 - include: ./neovim.yaml
 - include: ./autojump.yaml
 - include: ./remote.yaml
+- include: ./vale.yaml

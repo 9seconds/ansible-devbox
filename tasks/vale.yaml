@@ -1,0 +1,40 @@
+---
+# vim: set ft=ansible:
+
+
+- name: download vale
+  become: true
+  unarchive:
+    src: "{{ vale.url }}"
+    dest: /usr/local/bin
+    keep_newer: yes
+    remote_src: yes
+    exclude:
+      - LICENSE
+      - README.md
+    owner: root
+    group: root
+    mode: 0755
+
+- name: create vale styles directory
+  file:
+    path: ~/.valestyles
+    state: directory
+
+- name: download vale styles
+  unarchive:
+    src: "{{ item.value }}"
+    dest: ~/.valestyles
+    keep_newer: yes
+    remote_src: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  with_dict: "{{ vale.rules }}"
+
+- name: copy vale config
+  template:
+    src: vale.j2
+    dest: ~/.vale
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
