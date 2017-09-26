@@ -55,3 +55,28 @@
     state: present
   when: tmux_version.stdout | version_compare('2.2', '<')
   notify: apt changed
+
+- name: findout vim version
+  become: true
+  shell: >
+    apt-cache policy vim
+    | awk '/Installed/ {print $2}'
+    | sed 's?^.*:??g'
+  register: vim_version
+  changed_when: false
+
+- name: add ppa for vim 8
+  become: true
+  apt_repository:
+    repo: ppa:jonathonf/vim
+    filename: vim8
+    state: present
+    update_cache: yes
+  when: vim_version.stdout | version_compare('8', '<=')
+
+- name: update vim to vim >= 8
+  become: true
+  apt:
+    name: vim
+    state: latest
+  when: vim_version.stdout | version_compare('8', '<=')
