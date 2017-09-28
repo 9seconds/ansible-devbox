@@ -9,9 +9,10 @@
     purge: yes
     autoremove: yes
   with_items:
-  - ntp
-  - ntpdate
+    - ntp
+    - ntpdate
   notify: apt changed
+  tags: packages
 
 - name: find out current timezone
   command: cat /etc/timezone

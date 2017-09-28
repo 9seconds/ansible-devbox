@@ -8,9 +8,11 @@
     dest: ~/.fzf
     version: master
     clone: yes
+  tags: update
 
 - name: install fzf
   command: ./install --all --64
   args:
     chdir: ~/.fzf
     creates: ~/.fzf.zsh
+  tags: update

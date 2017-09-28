@@ -9,6 +9,7 @@
     state: "{{ item.value }}"
     executable: pip2
   with_dict: "{{ pip2_packages }}"
+  tags: update
 
 - name: install python3 packages
   become: true
@@ -17,3 +18,4 @@
     state: "{{ item.value }}"
     executable: pip3
   with_dict: "{{ pip3_packages }}"
+  tags: update

@@ -8,15 +8,17 @@
     name: "{{ item }}"
     state: present
   with_items:
-  - linux-image-extra-virtual
-  - "linux-image-extra-{{ ansible_kernel }}"
+    - linux-image-extra-virtual
+    - "linux-image-extra-{{ ansible_kernel }}"
   when: ansible_distribution_version | version_compare("16.04", "<")
+  tags: packages
 
 - name: install docker key
   become: true
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
+  tags: packages
 
 - name: add docker repository
   become: true
@@ -25,6 +27,7 @@
     filename: docker
     state: present
     update_cache: yes
+  tags: packages
 
 - name: ensure docker.service.d is created
   become: true
@@ -47,8 +50,9 @@
     name: docker-ce
     state: present
   notify:
-  - restart docker
-  - apt changed
+    - restart docker
+    - apt changed
+  tags: packages
 
 - name: add docker group
   become: true
@@ -71,3 +75,6 @@
   changed_when: >
     not (docker_pull_result.stdout_lines | last).startswith("Status: Image is up to date")
   notify: docker new images
+  tags:
+    - docker-images
+    - update

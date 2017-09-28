@@ -8,8 +8,9 @@
     url: "{{ item }}"
     state: present
   with_items:
-  - https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-  - https://dl.yarnpkg.com/debian/pubkey.gpg
+    - https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    - https://dl.yarnpkg.com/debian/pubkey.gpg
+  tags: packages
 
 - name: add nodejs repositories
   become: true
@@ -18,6 +19,7 @@
     filename: nodejs
     state: present
     update_cache: yes
+  tags: packages
 
 - name: add yarn repositories
   become: true
@@ -26,6 +28,7 @@
     state: present
     filename: yarn
     update_cache: yes
+  tags: packages
 
 - name: install nodejs
   become: true
@@ -33,9 +36,10 @@
     name: "{{ item }}"
     state: present
   with_items:
-  - nodejs
-  - yarn
+    - nodejs
+    - yarn
   notify: apt changed
+  tags: packages
 
 - name: install npm packages
   npm:
@@ -43,6 +47,7 @@
     state: latest
     global: yes
   with_items: "{{ npm_mandatory_packages }}"
+  tags: update
 
 - name: install eslintrc global config
   template:

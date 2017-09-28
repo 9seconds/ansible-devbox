@@ -16,6 +16,7 @@
     name: neovim
     state: present
   notify: apt changed
+  tags: packages
 
 - name: install support for ruby plugins
   become: true
@@ -29,16 +30,16 @@
     path: "{{ item }}"
     state: directory
   with_items:
-  - ~/.vim/autoload
-  - ~/.local/share/nvim/site/autoload
+    - ~/.vim/autoload
+    - ~/.local/share/nvim/site/autoload
 
 - name: download vim-plug
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ item }}"
   with_items:
-  - ~/.vim/autoload/plug.vim
-  - ~/.local/share/nvim/site/autoload/plug.vim
+    - ~/.vim/autoload/plug.vim
+    - ~/.local/share/nvim/site/autoload/plug.vim
 
 - name: create pyenvs for neovim
   command: >
@@ -61,8 +62,8 @@
     src: "~/.pyenv/versions/neovim{{ item }}"
     state: link
   with_items:
-  - 2
-  - 3
+    - 2
+    - 3
 
 - name: install neovim package into pythons
   pip:
@@ -70,12 +71,13 @@
     state: latest
     virtualenv: "~/.pyenv/versions/{{ item }}"
   with_items:
-  - neovim2
-  - neovim3
+    - neovim2
+    - neovim3
 
 - name: install neovim plugins
   command: nvim --headless -c {{ item | quote }} -c 'qall!'
   with_items:
-  - PlugUpgrade
-  - PlugUpdate
-  - UpdateRemotePlugins
+    - PlugUpgrade
+    - PlugUpdate
+    - UpdateRemotePlugins
+  tags: update

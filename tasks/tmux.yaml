@@ -24,6 +24,7 @@
   args:
     chdir: ~/.tmux/plugins/tpm/bin
   with_items:
-  - install_plugins
-  - update_plugins all
-  - clean_plugins
+    - install_plugins
+    - update_plugins all
+    - clean_plugins
+  tags: update

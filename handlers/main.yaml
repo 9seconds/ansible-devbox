@@ -47,8 +47,8 @@
     path: "~/.ssh/{{ item }}"
     state: absent
   with_items:
-  - known_hosts
-  - known_hosts.old
+    - known_hosts
+    - known_hosts.old
   listen: ssh config parts
 
 - name: add mandatory ssh hosts

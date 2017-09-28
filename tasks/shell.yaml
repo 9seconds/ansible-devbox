@@ -11,5 +11,6 @@
 - name: update antigen
   command: /usr/bin/zsh -ic 'antigen {{ item | quote }}'
   with_items:
-  - update
-  - cleanup
+    - update
+    - cleanup
+  tags: update

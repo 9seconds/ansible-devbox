@@ -3,18 +3,49 @@
 
 
 - include: ./apt.yaml
+  tags: devbox-apt
+
 - include: ./ntp.yaml
+  tags: devbox-ntp
+
 - include: ./locales.yaml
+  tags: devbox-locales
+
 - include: ./ssh.yaml
+  tags: devbox-ssh
+
 - include: ./htop.yaml
+  tags: devbox-htop
+
 - include: ./pip.yaml
+  tags: devbox-pip
+
 - include: ./docker.yaml
+  tags: devbox-docker
+
 - include: ./dotfiles.yaml
+  tags: devbox-dotfiles
+
 - include: ./tmux.yaml
+  tags: devbox-tmux
+
 - include: ./shell.yaml
+  tags: devbox-shell
+
 - include: ./fzf.yaml
+  tags: devbox-fzf
+
 - include: ./nodejs.yaml
+  tags: devbox-nodejs
+
 - include: ./pyenv.yaml
+  tags: devbox-pyenv
+
 - include: ./neovim.yaml
+  tags: devbox-neovim
+
 - include: ./autojump.yaml
+  tags: devbox-autojump
+
 - include: ./remote.yaml
+  tags: devbox-remote

@@ -20,6 +20,7 @@
     state: absent
   with_items: "{{ apt_packages_to_remove }}"
   notify: apt changed
+  tags: packages
 
 - name: install HWE stack
   become: true
@@ -27,6 +28,7 @@
     name: "linux-generic-hwe-{{ ansible_distribution_version }}"
     state: present
   notify: apt changed
+  tags: packages
 
 - name: upgrade apt packages
   become: true
@@ -34,6 +36,9 @@
     update_cache: yes
     upgrade: full
   notify: apt changed
+  tags:
+    - update
+    - packages
 
 - name: install mandatory packages
   become: true
@@ -42,11 +47,15 @@
     state: present
   with_items: "{{ apt_mandatory_packages }}"
   notify: apt changed
+  tags: packages
 
 - name: find out tmux version
   shell: tmux -V | cut -f2- -d' '
   register: tmux_version
   changed_when: false
+  tags:
+    - tmux
+    - packages
 
 - name: install tmux >= 2.1
   become: true
@@ -55,6 +64,9 @@
     state: present
   when: tmux_version.stdout | version_compare('2.2', '<')
   notify: apt changed
+  tags:
+    - tmux
+    - packages
 
 - name: findout vim version
   become: true
@@ -64,6 +76,9 @@
     | sed 's?^.*:??g'
   register: vim_version
   changed_when: false
+  tags:
+    - vim8
+    - packages
 
 - name: add ppa for vim 8
   become: true
@@ -73,6 +88,9 @@
     state: present
     update_cache: yes
   when: vim_version.stdout | version_compare('8', '<=')
+  tags:
+    - vim8
+    - packages
 
 - name: update vim to vim >= 8
   become: true
@@ -80,3 +98,6 @@
     name: vim
     state: latest
   when: vim_version.stdout | version_compare('8', '<=')
+  tags:
+    - vim8
+    - packages
