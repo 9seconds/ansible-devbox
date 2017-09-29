@@ -49,6 +49,16 @@
   notify: apt changed
   tags: packages
 
+- name: disable unattended upgrades
+  become: true
+  lineinfile:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    regexp: "^{{ item.key }}"
+    line: "{{ item.value }}"
+  with_dict:
+    'APT::Periodic::Update-Package-Lists': 'APT::Periodic::Update-Package-Lists "0";'
+    'APT::Periodic::Unattended-Upgrade': 'APT::Periodic::Unattended-Upgrade "0";'
+
 - name: find out tmux version
   shell: tmux -V | cut -f2- -d' '
   register: tmux_version
