@@ -20,14 +20,14 @@ dotfiles_link: git@github.com:9seconds/dotfiles.git
 
 pyenv_pythons:
 - 2.6.9
-- 2.7.13
+- 2.7.14
 - 3.4.7
 - 3.5.4
 - 3.6.2
 - pypy2.7-5.8.0
 - pypy3.5-5.8.0
 
-pyenv_python2: 2.7.13
+pyenv_python2: 2.7.14
 pyenv_python3: 3.6.2
 
 docker_bip: 10.201.0.2/24
