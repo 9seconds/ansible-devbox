@@ -23,12 +23,12 @@ pyenv_pythons:
 - 2.7.14
 - 3.4.7
 - 3.5.4
-- 3.6.2
+- 3.6.3
 - pypy2.7-5.8.0
 - pypy3.5-5.8.0
 
 pyenv_python2: 2.7.14
-pyenv_python3: 3.6.2
+pyenv_python3: 3.6.3
 
 docker_bip: 10.201.0.2/24
 docker_storage_driver: overlay2
