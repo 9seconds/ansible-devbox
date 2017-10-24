@@ -125,6 +125,7 @@ stow_dotfiles:
 - scripts
 - tmux
 - vim
+- yapf
 - zsh
 
 pip3_packages:
@@ -132,6 +133,7 @@ pip3_packages:
   httpie: latest
   http-prompt: latest
   proselint: latest
+  yapf: latest
 
 pip2_packages:
   docker-compose: latest
