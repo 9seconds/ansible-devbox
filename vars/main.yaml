@@ -119,6 +119,7 @@ stow_dotfiles:
 - ctags
 - git
 - httpie
+- isort
 - nodejs
 - pip
 - python
@@ -129,10 +130,11 @@ stow_dotfiles:
 - zsh
 
 pip3_packages:
-  rstcheck: latest
   httpie: latest
   http-prompt: latest
+  isort: latest
   proselint: latest
+  rstcheck: latest
   yapf: latest
 
 pip2_packages:
