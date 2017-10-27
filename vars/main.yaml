@@ -138,6 +138,7 @@ pip3_packages:
   proselint: latest
   rstcheck: latest
   yapf: latest
+  "httpie-http2": latest
 
 pip2_packages:
   docker-compose: latest
