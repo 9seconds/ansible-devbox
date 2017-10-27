@@ -16,7 +16,9 @@ apt_mandatory_packages:
 - automake
 - build-essential
 - ca-certificates
+- cargo
 - ccache
+- cmake
 - cookiecutter
 - curl
 - exuberant-ctags
@@ -140,5 +142,9 @@ pip3_packages:
 pip2_packages:
   docker-compose: latest
   tmuxp: latest
+
+cargo_packages:
+  "cargo-update": cargo-install-update
+  ripgrep: rg
 
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
