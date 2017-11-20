@@ -125,6 +125,7 @@ stow_dotfiles:
 - pip
 - python
 - scripts
+- sqlite3
 - tmux
 - vim
 - yapf
