@@ -50,5 +50,5 @@
 - include: ./remote.yaml
   tags: devbox-remote
 
-- include: ./ripgrep.yaml
-  tags: devbox-ripgrep
+- include: ./rust.yaml
+  tags: devbox-rust
