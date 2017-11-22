@@ -133,12 +133,13 @@ stow_dotfiles:
 
 pip3_packages:
   httpie: latest
+  "httpie-http2": latest
   http-prompt: latest
   isort: latest
+  mitmproxy: latest
   proselint: latest
   rstcheck: latest
   yapf: latest
-  "httpie-http2": latest
 
 pip2_packages:
   docker-compose: latest
