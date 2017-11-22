@@ -148,4 +148,9 @@ cargo_packages:
   "cargo-update": cargo-install-update
   ripgrep: rg
 
+restic:
+  url: https://github.com/restic/restic/releases/download/v0.7.3/restic_0.7.3_linux_amd64.bz2
+  backup_dir: /vagrant/backup
+  safe_dir: safe
+
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz

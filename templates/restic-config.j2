@@ -1,0 +1,8 @@
+# vim: set ft=sh:
+{{ ansible_managed | comment }}
+
+export RESTIC_REPOSITORY=/vagrant/backup
+export RESTIC_EXCLUDE_FILE={{ "%s/.config/rbackup/excludes" | format(ansible_user_dir) | quote }}
+export RESTIC_PASSWORD_FILE={{ "%s/.config/rbackup/password" | format(ansible_user_dir) | quote }}
+export RESTIC_DIRECTORIES="{{ "%s/%s" | format(ansible_user_dir, restic.safe_dir) | quote }}"
+export MAIN_USER={{ ansible_user_id }}

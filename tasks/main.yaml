@@ -52,3 +52,6 @@
 
 - include: ./rust.yaml
   tags: devbox-rust
+
+- include: ./safedir.yaml
+  tags: devbox-safedir
