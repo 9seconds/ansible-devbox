@@ -47,6 +47,7 @@ apt_mandatory_packages:
 - llvm
 - locales
 - ncurses-term
+- nginx-extras
 - openssh-client
 - par
 - pbzip2
