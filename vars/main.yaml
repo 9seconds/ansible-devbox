@@ -123,7 +123,6 @@ stow_dotfiles:
 - httpie
 - isort
 - nodejs
-- pip
 - python
 - scripts
 - sqlite3
@@ -133,13 +132,14 @@ stow_dotfiles:
 - zsh
 
 pip3_packages:
-  httpie: latest
   "httpie-http2": latest
+  httpie: latest
   http-prompt: latest
   isort: latest
   mitmproxy: latest
   proselint: latest
   rstcheck: latest
+  twine: latest
   yapf: latest
 
 pip2_packages:
@@ -156,3 +156,10 @@ restic:
   safe_dir: safe
 
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
+
+devpi:
+  dir: "{{ ansible_user_dir }}/.devpi/server"
+  local_port: 7100
+  nginx_port: 7101
+  host: 127.0.0.1
+  main_index_name: main

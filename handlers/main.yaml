@@ -75,3 +75,11 @@
     name: nginx
     state: restarted
     enabled: yes
+
+- name: restart devpi
+  systemd:
+    name: devpi.service
+    daemon_reload: yes
+    enabled: yes
+    state: restarted
+    user: yes

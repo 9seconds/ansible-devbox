@@ -26,6 +26,9 @@
 - include: ./nginx.yaml
   tags: devbox-nginx
 
+- include: ./devpi.yaml
+  tags: devbox-devpi
+
 - include: ./dotfiles.yaml
   tags: devbox-dotfiles
 

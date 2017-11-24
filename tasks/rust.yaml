@@ -42,4 +42,4 @@
 - name: update existing packages
   command: ~/.cargo/bin/cargo install-update "{{ item.key | quote }}"
   with_dict: "{{ cargo_packages }}"
-  tags: packages
+  tags: update

@@ -6,6 +6,7 @@
   stat:
     path: ~/.local/bin/restic
   register: stat_restic_bin
+  tags: update
 
 - name: download restic
   shell: >
@@ -15,12 +16,12 @@
   args:
     warn: no
   when: not(stat_restic_bin.stat.exists)
-  tags: packages
+  tags: update
 
 - name: update restic
   command: ~/.bin/rbackup update-restic {{ restic.url | quote }}
   when: stat_restic_bin.stat.exists
-  tags: packages
+  tags: update
 
 - name: ensure that config directory is created
   become: true
