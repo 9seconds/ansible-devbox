@@ -139,6 +139,7 @@ pip3_packages:
   mitmproxy: latest
   proselint: latest
   rstcheck: latest
+  tldr: latest
   twine: latest
   yapf: latest
 
