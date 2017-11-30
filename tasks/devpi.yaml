@@ -22,31 +22,28 @@
   tags: update
 
 - name: initialize devpi server dir
+  become: true
   command: devpi-server --serverdir {{ devpi.dir | quote }} --init
   args:
     creates: "{{ devpi.dir }}"
 
-- name: ensure systemd user directory is created
-  file:
-    path: ~/.config/systemd/user
-    state: directory
-
 - name: install systemd service for devpi
+  become: true
   template:
     src: devpi.service.j2
-    dest: ~/.config/systemd/user/devpi.service
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    dest: /etc/systemd/system/devpi.service
+    owner: root
+    group: root
     mode: 0644
   notify: restart devpi
 
 - name: ensure devpi is started
+  become: true
   systemd:
     name: devpi.service
     daemon_reload: yes
     enabled: yes
     state: started
-    user: yes
 
 - name: copy dev server config
   become: true
