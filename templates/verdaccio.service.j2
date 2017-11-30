@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Verdaccio - caching npm mirror
+
+[Service]
+ExecStart=/usr/bin/verdaccio --listen {{ "%s:%s" | format(verdaccio.host, verdaccio.port) | quote }} --config {{ verdaccio.config | quote }}
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

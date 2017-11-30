@@ -41,6 +41,62 @@
   notify: apt changed
   tags: packages
 
+- name: install verdaccio
+  become: true
+  npm:
+    name: verdaccio
+    state: latest
+    global: yes
+  tags: update
+  notify: restart verdaccio
+
+- name: add verdaccio config
+  become: true
+  template:
+    src: verdaccio.yaml.j2
+    dest: "{{ verdaccio.config }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart verdaccio
+
+- name: add systemd unit
+  become: true
+  template:
+    src: verdaccio.service.j2
+    dest: /etc/systemd/system/verdaccio.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart verdaccio
+
+- name: ensure verdaccio is started
+  become: true
+  systemd:
+    name: verdaccio.service
+    daemon_reload: yes
+    enabled: yes
+    state: started
+
+- name: copy npmrc
+  template:
+    src: npmrc.j2
+    dest: ~/.npmrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
+
+- name: create verdaccio directory
+  become: true
+  file:
+    path: "{{ verdaccio.dir }}"
+    state: directory
+
+- name: create node prefix directory
+  file:
+    path: "{{ ansible_user_dir }}/.node_prefix"
+    state: directory
+
 - name: install npm packages
   npm:
     name: "{{ item }}"

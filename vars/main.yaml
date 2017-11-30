@@ -122,7 +122,6 @@ stow_dotfiles:
 - git
 - httpie
 - isort
-- nodejs
 - python
 - scripts
 - sqlite3
@@ -159,8 +158,14 @@ restic:
 teleconsole_url: https://github.com/gravitational/teleconsole/releases/download/0.3.1/teleconsole-v0.3.1-linux-amd64.tar.gz
 
 devpi:
-  dir: "/var/lib/devpi"
+  dir: /var/lib/devpi
   local_port: 7100
   nginx_port: 7101
   host: 127.0.0.1
   main_index_name: main
+
+verdaccio:
+  dir: /var/lib/verdaccio
+  config: /etc/verdaccio.yaml
+  host: 127.0.0.1
+  port: 4873
