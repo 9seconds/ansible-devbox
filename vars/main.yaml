@@ -169,3 +169,7 @@ verdaccio:
   config: /etc/verdaccio.yaml
   host: 127.0.0.1
   port: 4873
+
+cortesi_tools:
+  modd: https://github.com/cortesi/modd/releases/download/v0.5/modd-0.5-linux64.tgz
+  devd: https://github.com/cortesi/devd/releases/download/v0.7/devd-0.7-linux64.tgz
