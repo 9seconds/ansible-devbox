@@ -173,3 +173,5 @@ verdaccio:
 cortesi_tools:
   modd: https://github.com/cortesi/modd/releases/download/v0.5/modd-0.5-linux64.tgz
   devd: https://github.com/cortesi/devd/releases/download/v0.7/devd-0.7-linux64.tgz
+
+mitmproxy_port: 20202
