@@ -134,6 +134,7 @@ pip3_packages:
   "httpie-http2": latest
   httpie: latest
   http-prompt: latest
+  icdiff: latest
   isort: latest
   mitmproxy: latest
   proselint: latest
