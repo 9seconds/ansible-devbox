@@ -90,10 +90,12 @@ apt_mandatory_packages:
 
 npm_mandatory_packages:
 - eslint
+- javascript-typescript-langserver
 - markdownlint-cli
 - sass-lint
 - tern
 - write-good
+- vue-language-server
 
 locales:
 - en_US.UTF-8
@@ -138,6 +140,7 @@ pip3_packages:
   isort: latest
   mitmproxy: latest
   proselint: latest
+  "python-language-server": latest
   rstcheck: latest
   tldr: latest
   twine: latest
@@ -145,6 +148,7 @@ pip3_packages:
 
 pip2_packages:
   docker-compose: latest
+  "python-language-server": latest
   tmuxp: latest
 
 cargo_packages:
