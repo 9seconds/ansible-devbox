@@ -28,3 +28,16 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0644
+
+- name: find out existing virtualenvs
+  command: /usr/bin/zsh -ic "pyenv virtualenvs --bare --skip-aliases"
+  register: virtualenvs
+  changed_when: false
+  tags: update
+
+- name: update virtualenvs
+  command: >
+    /usr/bin/zsh -ic
+    "pyenv activate {{ item | quote }} && pip install -U -r ~/.pyenv/default-packages"
+  with_items: "{{ virtualenvs.stdout_lines }}"
+  tags: update
