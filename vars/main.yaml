@@ -156,7 +156,7 @@ cargo_packages:
   ripgrep: rg
 
 restic:
-  url: https://github.com/restic/restic/releases/download/v0.7.3/restic_0.7.3_linux_amd64.bz2
+  url: https://github.com/restic/restic/releases/download/v0.8.1/restic_0.8.1_linux_amd64.bz2
   backup_dir: /vagrant/backup
   safe_dir: safe
 
@@ -177,6 +177,6 @@ verdaccio:
 
 cortesi_tools:
   modd: https://github.com/cortesi/modd/releases/download/v0.5/modd-0.5-linux64.tgz
-  devd: https://github.com/cortesi/devd/releases/download/v0.7/devd-0.7-linux64.tgz
+  devd: https://github.com/cortesi/devd/releases/download/v0.8/devd-0.8-linux64.tgz
 
 mitmproxy_port: 20202
