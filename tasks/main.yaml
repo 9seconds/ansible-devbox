@@ -44,6 +44,9 @@
 - include: ./nodejs.yaml
   tags: devbox-nodejs
 
+- include: ./java.yaml
+  tags: devbox-java
+
 - include: ./pyenv.yaml
   tags: devbox-pyenv
 

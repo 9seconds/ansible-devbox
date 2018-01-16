@@ -1,0 +1,35 @@
+---
+# vim: set ft=ansible:
+
+
+- name: add apt repository
+  become: true
+  apt_repository:
+    repo: ppa:webupd8team/java
+    state: present
+    filename: java
+    update_cache: yes
+  tags:
+    - update
+    - packages
+
+- name: activate java license
+  become: true
+  shell: >
+    echo oracle-{{ java_version }}-installer
+    shared/accepted-oracle-license-v1-1 {{ item }} true | sudo /usr/bin/debconf-set-selections
+  with_items:
+    - select
+    - boolean
+  tags:
+    - update
+    - packages
+
+- name: install java
+  become: true
+  apt:
+    name: "oracle-{{ java_version }}-set-default"
+    state: latest
+  tags:
+    - update
+    - packages

@@ -30,6 +30,8 @@ pyenv_pythons:
 pyenv_python2: 2.7.14
 pyenv_python3: 3.6.4
 
+java_version: java9
+
 docker_bip: 10.201.0.2/24
 docker_storage_driver: overlay2
 
