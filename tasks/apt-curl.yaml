@@ -1,0 +1,51 @@
+---
+# vim: set ft=ansible:
+
+
+- name: install build requirements for curl
+  become: true
+  apt:
+    name: curl
+    state: build-dep
+
+- name: install libnghttp2-dev for http2 support
+  become: true
+  apt:
+    name: libnghttp2-dev
+    state: present
+
+- name: create build temporary directory
+  tempfile:
+    state: directory
+    prefix: curlbuild
+  register: build_dir
+
+- name: download sources
+  command: apt-get source curl
+  args:
+    warn: no
+    chdir: "{{ build_dir.path }}"
+
+- name: findout build path
+  find:
+    path: "{{ build_dir.path }}"
+    file_type: directory
+  register: build_path
+
+- name: build curl package
+  command: dpkg-buildpackage -rfakeroot
+  args:
+    chdir: "{{ build_path.files[0].path }}"
+
+- name: findout installed curl packages
+  shell: >
+    dpkg -l
+    | awk '$1 = /ii/ && $2 ~ /^(lib)?curl/ {print $2}'
+    | cut -f 1 -d ':'
+  register: installed_packages
+
+- name: install updated packages
+  become: true
+  shell: dpkg -i {% for name in installed_packages.stdout_lines %}{{ name }}_*.deb {% endfor %}
+  args:
+    chdir: "{{ build_dir.path }}"

@@ -61,7 +61,7 @@
     'APT::Periodic::Unattended-Upgrade': 'APT::Periodic::Unattended-Upgrade "0";'
 
 - name: find out tmux version
-  shell: tmux -V | cut -f2- -d' '
+  shell: tmux -V | cut -f2- -d " "
   register: tmux_version
   changed_when: false
   tags:
@@ -73,7 +73,7 @@
   apt:
     deb: "{{ tmux_deb_link }}"
     state: present
-  when: tmux_version.stdout | version_compare('2.2', '<')
+  when: tmux_version.stdout | version_compare("2.2", "<")
   notify: apt changed
   tags:
     - tmux
@@ -98,7 +98,7 @@
     filename: vim8
     state: present
     update_cache: yes
-  when: vim_version.stdout | version_compare('8', '<=')
+  when: vim_version.stdout | version_compare("8", "<=")
   tags:
     - vim8
     - packages
@@ -108,7 +108,25 @@
   apt:
     name: vim
     state: latest
-  when: vim_version.stdout | version_compare('8', '<=')
+  when: vim_version.stdout | version_compare("8", "<=")
   tags:
     - vim8
     - packages
+
+- name: check if curl support http2
+  command: curl --http2 -I nghttp2.org
+  args:
+    warn: no
+  failed_when: false
+  changed_when: false
+  register: curl_result
+  tags:
+    - packages
+    - curl
+
+- name: install curl with http2
+  include: ./apt-curl.yaml
+  when: curl_result | failed
+  tags:
+    - packages
+    - curl
