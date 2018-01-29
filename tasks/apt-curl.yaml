@@ -49,3 +49,10 @@
   shell: dpkg -i {% for name in installed_packages.stdout_lines %}{{ name }}_*.deb {% endfor %}
   args:
     chdir: "{{ build_dir.path }}"
+
+- name: prevent curl from updating
+  become: true
+  dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  with_items: "{{ installed_packages.stdout_lines }}"
