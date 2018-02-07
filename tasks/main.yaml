@@ -59,6 +59,9 @@
 - include: ./remote.yaml
   tags: devbox-remote
 
+- include: ./pup.yaml
+  tags: devbox-pup
+
 - include: ./rust.yaml
   tags: devbox-rust
 
