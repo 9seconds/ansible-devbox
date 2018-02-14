@@ -25,6 +25,7 @@ apt_mandatory_packages:
   - g++
   - gcc
   - git
+  - global
   - golang-go
   - htop
   - iftop
@@ -60,6 +61,7 @@ apt_mandatory_packages:
   - python3-dev
   - python3-jedi
   - python3-pip
+  - python3-pygments
   - python3-setuptools
   - python3-virtualenv
   - python3-wheel
@@ -67,6 +69,7 @@ apt_mandatory_packages:
   - python-jedi
   - python-pip
   - python-pip-whl
+  - python-pygments
   - python-setuptools
   - python-virtualenv
   - python-wheel
@@ -107,6 +110,7 @@ locales:
   - ru_RU.UTF-8
 
 tmux_deb_link: http://no.archive.ubuntu.com/ubuntu/pool/main/t/tmux/tmux_2.3-4ubuntu1_amd64.deb
+gnu_global_deb_link: https://launchpadlibrarian.net/325418261/global_6.5.7-1_amd64.deb
 
 pyenv_plugins:
   - name: pyenv-virtualenv
@@ -127,6 +131,7 @@ stow_dotfiles:
   - aria2
   - ctags
   - git
+  - global
   - httpie
   - isort
   - python
