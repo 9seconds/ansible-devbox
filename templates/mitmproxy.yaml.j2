@@ -1,10 +1,10 @@
 {{ ansible_managed | comment }}
 
 anticache: true
-anticomp: true
+anticomp: false
 flow_detail: 3
 http2: true
 listen_host: 0.0.0.0
 listen_port: {{ mitmproxy_port }}
-mode: transparent
+mode: regular
 showhost: false
