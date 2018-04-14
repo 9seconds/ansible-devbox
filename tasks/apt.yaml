@@ -73,7 +73,7 @@
   apt:
     deb: "{{ tmux_deb_link }}"
     state: present
-  when: tmux_version.stdout | version_compare("2.2", "<")
+  when: tmux_version.stdout is version_compare("2.2", "<")
   notify: apt changed
   tags:
     - tmux
@@ -98,7 +98,7 @@
     filename: vim8
     state: present
     update_cache: yes
-  when: vim_version.stdout | version_compare("8", "<=")
+  when: vim_version.stdout is version_compare("8", "<=")
   tags:
     - vim8
     - packages
@@ -108,7 +108,7 @@
   apt:
     name: vim
     state: latest
-  when: vim_version.stdout | version_compare("8", "<=")
+  when: vim_version.stdout is version_compare("8", "<=")
   tags:
     - vim8
     - packages
@@ -126,7 +126,7 @@
 
 - name: install curl with http2
   include: ./apt-curl.yaml
-  when: curl_result | failed
+  when: curl_result is failed
   tags:
     - packages
     - curl
@@ -143,7 +143,7 @@
   apt:
     deb: "{{ gnu_global_deb_link }}"
     state: present
-  when: gtags_version.stdout | version_compare("6.3.2", "<=")
+  when: gtags_version.stdout is version_compare("6.3.2", "<=")
   tags:
     - gnu_global
     - packages

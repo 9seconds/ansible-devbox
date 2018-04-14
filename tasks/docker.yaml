@@ -10,7 +10,7 @@
   with_items:
     - linux-image-extra-virtual
     - "linux-image-extra-{{ ansible_kernel }}"
-  when: ansible_distribution_version | version_compare("16.04", "<")
+  when: ansible_distribution_version is version_compare("16.04", "<")
   tags: packages
 
 - name: install docker key
