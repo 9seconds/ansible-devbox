@@ -114,7 +114,7 @@
     - packages
 
 - name: check if curl support http2
-  command: curl --version | grep Protocols | grep -q http2
+  command: curl -I --http2 nghttp2.org
   args:
     warn: no
   failed_when: false
@@ -126,7 +126,7 @@
 
 - name: install curl with http2
   include: ./apt-curl.yaml
-  when: curl_result is failed
+  when: curl_result.rc != 0
   tags:
     - packages
     - curl
