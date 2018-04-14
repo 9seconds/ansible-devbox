@@ -110,7 +110,7 @@ locales:
   - en_US.UTF-8
   - ru_RU.UTF-8
 
-tmux_deb_link: http://no.archive.ubuntu.com/ubuntu/pool/main/t/tmux/tmux_2.3-4ubuntu1_amd64.deb
+tmux_deb_link: http://no.archive.ubuntu.com/ubuntu/pool/main/t/tmux/tmux_2.5-3build1_amd64.deb
 gnu_global_deb_link: https://launchpadlibrarian.net/325418261/global_6.5.7-1_amd64.deb
 
 pyenv_plugins:
