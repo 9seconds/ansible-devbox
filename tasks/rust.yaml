@@ -8,7 +8,7 @@
     dest: /tmp/rustup.sh
     mode: 0755
   register: rustup_installer
-  when: not("~/.cargo/bin/rustup" | exists)
+  when: not("~/.cargo/bin/rustup" is exists)
 
 - name: install rustup
   command: /tmp/rustup.sh -y --no-modify-path

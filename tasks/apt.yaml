@@ -114,7 +114,7 @@
     - packages
 
 - name: check if curl support http2
-  command: curl --http2 -I nghttp2.org
+  command: curl --version | grep Protocols | grep -q http2
   args:
     warn: no
   failed_when: false

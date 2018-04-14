@@ -8,6 +8,18 @@
   register: stat_restic_bin
   tags: update
 
+- name: ensure directory for binary exists
+  file:
+    path: ~/.local/bin
+    state: directory
+  tags: update
+
+- name: ensure directory exists
+  file:
+    path: ~/.local/bin
+    state: directory
+  tags: update
+
 - name: download restic
   shell: >
     curl -sfL -o - {{ restic.url | quote }} |
