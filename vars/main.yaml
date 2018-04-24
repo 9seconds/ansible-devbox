@@ -37,6 +37,7 @@ apt_mandatory_packages:
   - libapt-pkg-dev
   - libbz2-dev
   - libcurl4-gnutls-dev
+  - libc-ares-dev
   - libffi-dev
   - liblzma-dev
   - libncurses5-dev

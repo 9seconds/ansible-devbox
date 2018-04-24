@@ -32,10 +32,25 @@
     file_type: directory
   register: build_path
 
+- name: update debian/control with c-ares dependency
+  lineinfile:
+    path: "{{ build_path.files[0].path }}/debian/control"
+    state: present
+    insertafter: "^Build-Depends.*"
+    line: " libc-ares-dev,"
+
+- name: update debian/rules with c-ares dependency
+  replace:
+    path: "{{ build_path.files[0].path }}/debian/rules"
+    regexp: --enable-threaded-resolver
+    replace: --enable-ares
+
 - name: build curl package
   command: dpkg-buildpackage -rfakeroot
   args:
     chdir: "{{ build_path.files[0].path }}"
+  environment:
+    DEB_BUILD_OPTIONS: nocheck
 
 - name: findout installed curl packages
   shell: >
