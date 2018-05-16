@@ -22,14 +22,15 @@
   notify: apt changed
   tags: packages
 
-- name: install HWE stack
-  become: true
-  apt:
-    name: "linux-generic-hwe-{{ ansible_distribution_version }}"
-    state: present
-    update_cache: yes
-  notify: apt changed
-  tags: packages
+# TODO: Enable HWE when available
+# - name: install HWE stack
+#   become: true
+#   apt:
+#     name: "linux-generic-hwe-{{ ansible_distribution_version }}"
+#     state: present
+#     update_cache: yes
+#   notify: apt changed
+#   tags: packages
 
 - name: upgrade apt packages
   become: true

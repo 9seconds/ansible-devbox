@@ -92,7 +92,6 @@ apt_mandatory_packages:
   - vim
   - wget
   - wget
-  - wrk
   - xz-utils
   - yamllint
   - zlib1g-dev
