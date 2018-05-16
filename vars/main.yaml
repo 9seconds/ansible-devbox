@@ -21,6 +21,10 @@ apt_mandatory_packages:
   - cmake
   - cookiecutter
   - curl
+  # it may looks like that it is silly to have docker-compose both
+  # in package and installed by pip. But unfortunately it has dependency
+  # on docker python interface which is broken. so there
+  - docker-compose
   - exuberant-ctags
   - g++
   - gcc
@@ -36,8 +40,8 @@ apt_mandatory_packages:
   - keychain
   - libapt-pkg-dev
   - libbz2-dev
-  - libcurl4-gnutls-dev
   - libc-ares-dev
+  - libcurl4-gnutls-dev
   - libffi-dev
   - liblzma-dev
   - libncurses5-dev
@@ -59,14 +63,6 @@ apt_mandatory_packages:
   - pkg-config
   - pxz
   - python
-  - python3
-  - python3-dev
-  - python3-jedi
-  - python3-pip
-  - python3-pygments
-  - python3-setuptools
-  - python3-virtualenv
-  - python3-wheel
   - python-dev
   - python-jedi
   - python-pip
@@ -75,6 +71,14 @@ apt_mandatory_packages:
   - python-setuptools
   - python-virtualenv
   - python-wheel
+  - python3
+  - python3-dev
+  - python3-jedi
+  - python3-pip
+  - python3-pygments
+  - python3-setuptools
+  - python3-virtualenv
+  - python3-wheel
   - rsync
   - ruby
   - ruby-dev
