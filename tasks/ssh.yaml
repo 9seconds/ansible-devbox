@@ -12,16 +12,18 @@
     path: ~/.ssh/sockets
     state: directory
 
+- name: find out the keys to copy
+  local_action: command find ~/.ssh -name 'id_*' -type f
+  register: ssh_key_paths
+
 - name: copy ssh keys from the local machine
   copy:
-    src: "~/.ssh/{{ item }}"
+    src: "{{ item }}"
     dest: ~/.ssh
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0400
-  with_items:
-    - id_rsa
-    - id_rsa.pub
+  with_items: "{{ ssh_key_paths.stdout_lines }}"
 
 - name: copy common part of ssh config
   template:
