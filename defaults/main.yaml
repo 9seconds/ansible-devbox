@@ -20,23 +20,23 @@ dotfiles_link: git@github.com:9seconds/dotfiles.git
 
 pyenv_pythons:
 - 2.6.9
-- 2.7.14
-- 3.4.7
-- 3.5.4
-- 3.6.4
-- pypy2.7-5.8.0
-- pypy3.5-5.8.0
+- 2.7.15
+- 3.4.8
+- 3.5.5
+- 3.6.5
+- pypy2.7-6.0.0
+- pypy3.5-6.0.0
 
-pyenv_python2: 2.7.14
-pyenv_python3: 3.6.4
+pyenv_python2: 2.7.15
+pyenv_python3: 3.6.5
 
-java_version: java9
+java_version: java10
 
 docker_bip: 10.201.0.2/24
 docker_storage_driver: overlay2
 
 mandatory_docker_images:
-- ubuntu:xenial
+- ubuntu:bionic
 - ubuntu:latest
 
 known_ssh_hosts:
