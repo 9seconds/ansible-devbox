@@ -1,6 +1,16 @@
 ---
 # vim: set ft=ansible:
 
+- name: findout all nginx modules
+  find:
+    paths: /usr/lib/nginx/modules
+    recurse: no
+    patterns: '*.so'
+  register: nginx_modules
+
+- set_fact:
+    nginx_modules: "{{ nginx_modules.files | map(attribute='path') | map('replace', '/usr/lib/nginx/', '') | sort }}"
+
 - name: copy nginx global config
   become: true
   template:
