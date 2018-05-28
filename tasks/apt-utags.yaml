@@ -13,7 +13,7 @@
     chdir: /tmp/utags
 
 - name: configure for universal ctags
-  command: ./configure --program-prefix=utags --prefix=/usr/local
+  command: ./configure --program-prefix=u --prefix=/usr/local
   args:
     chdir: /tmp/utags
 
