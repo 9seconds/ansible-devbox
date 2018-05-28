@@ -148,3 +148,7 @@
   tags:
     - gnu_global
     - packages
+
+- name: install universal ctags
+  include: ./apt-utags.yaml
+  tags: packages
