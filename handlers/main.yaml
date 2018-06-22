@@ -83,11 +83,3 @@
     daemon_reload: yes
     enabled: yes
     state: restarted
-
-- name: restart verdaccio
-  become: true
-  systemd:
-    name: verdaccio.service
-    daemon_reload: yes
-    enabled: yes
-    state: restarted
