@@ -47,6 +47,7 @@
     name: verdaccio
     state: latest
     global: yes
+    registry: https://registry.npmjs.org/
   tags: update
   notify: restart verdaccio
 
@@ -102,6 +103,7 @@
     name: "{{ item }}"
     state: latest
     global: yes
+    registry: https://registry.npmjs.org/
   with_items: "{{ npm_mandatory_packages }}"
   tags: update
 
