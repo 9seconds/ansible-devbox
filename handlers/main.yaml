@@ -30,7 +30,7 @@
 
 - name: docker system prune
   become: true
-  command: docker system prune -f
+  command: docker system prune -f --volumes
   args:
     warn: no
   listen: docker new images
