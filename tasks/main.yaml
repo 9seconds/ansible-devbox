@@ -73,3 +73,6 @@
 
 - include: ./mitmproxy.yaml
   tags: devbox-mitmproxy
+
+- include: ./iterm2.yaml
+  tags: devbox-iterm2
