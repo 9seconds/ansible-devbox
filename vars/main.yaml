@@ -25,6 +25,7 @@ apt_mandatory_packages:
   # in package and installed by pip. But unfortunately it has dependency
   # on docker python interface which is broken. so there
   - docker-compose
+  - expect
   - exuberant-ctags
   - g++
   - gcc
