@@ -33,11 +33,10 @@
 - name: install nodejs
   become: true
   apt:
-    name: "{{ item }}"
+    name:
+      - nodejs
+      - yarn
     state: present
-  with_items:
-    - nodejs
-    - yarn
   notify: apt changed
   tags: packages
 

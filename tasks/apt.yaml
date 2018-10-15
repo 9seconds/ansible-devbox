@@ -14,15 +14,13 @@
 - name: remove apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: "{{ apt_packages_to_remove }}"
     purge: yes
     autoremove: yes
     state: absent
-  with_items: "{{ apt_packages_to_remove }}"
   notify: apt changed
   tags: packages
 
-# TODO: Enable HWE when available
 # - name: install HWE stack
 #   become: true
 #   apt:
@@ -45,9 +43,8 @@
 - name: install mandatory packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: "{{ apt_mandatory_packages }}"
     state: present
-  with_items: "{{ apt_mandatory_packages }}"
   notify: apt changed
   tags: packages
 

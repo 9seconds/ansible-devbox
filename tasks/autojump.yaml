@@ -22,6 +22,6 @@
   systemd:
     name: autojump.timer
     daemon_reload: yes
-    user: yes
+    scope: user
     enabled: yes
     state: started

@@ -5,12 +5,11 @@
 - name: install devpi server
   become: true
   pip:
-    name: "{{ item }}"
+    name:
+      - devpi-server
+      - devpi-client
     state: latest
     executable: pip3
-  with_items:
-    - devpi-server
-    - devpi-client
   tags: update
   notify: restart devpi
 

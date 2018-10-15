@@ -4,13 +4,12 @@
 - name: remove ntp
   become: true
   apt:
-    name: "{{ item }}"
+    name:
+      - ntp
+      - ntpdate
     state: absent
     purge: yes
     autoremove: yes
-  with_items:
-    - ntp
-    - ntpdate
   notify: apt changed
   tags: packages
 
