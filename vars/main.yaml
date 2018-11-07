@@ -31,7 +31,6 @@ apt_mandatory_packages:
   - gcc
   - git
   - global
-  - golang-go
   - htop
   - iftop
   - iotop
@@ -101,6 +100,9 @@ apt_mandatory_packages:
   - yamllint
   - zlib1g-dev
   - zsh
+
+snap_mandatory_packages:
+  - go
 
 npm_mandatory_packages:
   - eslint

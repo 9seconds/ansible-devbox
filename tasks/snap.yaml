@@ -1,0 +1,21 @@
+---
+# vim: set ft=ansible:
+
+
+- name: install mandatory snaps
+  become: true
+  command: snap install {{ item | quote }}
+  with_items: "{{ snap_mandatory_packages }}"
+
+- name: update snaps
+  become: true
+  command: snap refresh
+
+- name: remove obsolete snaps
+  become: true
+  shell: >
+    snap list --all |
+    awk '/disabled/{print $1, $3}' |
+    while read snapname revision; do
+      snap remove "--revision=$revision" "$snapname";
+    done

@@ -5,6 +5,9 @@
 - include: ./apt.yaml
   tags: devbox-apt
 
+- include: ./snap.yaml
+  tags: devbox-snap
+
 - include: ./ntp.yaml
   tags: devbox-ntp
 
