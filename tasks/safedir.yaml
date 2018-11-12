@@ -100,7 +100,7 @@
   systemd:
     name: "{{ item }}.timer"
     daemon_reload: yes
-    user: yes
+    scope: user
     enabled: yes
     state: started
   with_items:
