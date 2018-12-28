@@ -163,6 +163,9 @@ pip3_packages:
   tldr: latest
   twine: latest
   yapf: latest
+  "pip-tools": latest
+  poetry: latest
+  pipenv: latest
 
 pip2_packages:
   docker-compose: latest
