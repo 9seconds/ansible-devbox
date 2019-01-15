@@ -67,7 +67,7 @@
 
 - name: install neovim package into pythons
   pip:
-    name: neovim
+    name: pynvim
     state: latest
     virtualenv: "~/.pyenv/versions/{{ item }}"
   with_items:
