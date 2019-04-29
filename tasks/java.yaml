@@ -17,7 +17,7 @@
   become: true
   shell: >
     echo oracle-{{ java_version }}-installer
-    shared/accepted-oracle-license-v1-1 {{ item }} true | sudo /usr/bin/debconf-set-selections
+    shared/accepted-oracle-license-v1-2 {{ item }} true | sudo /usr/bin/debconf-set-selections
   with_items:
     - select
     - boolean
