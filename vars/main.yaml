@@ -120,7 +120,7 @@ locales:
   - ru_RU.UTF-8
 
 tmux_deb_link: http://ftp.hu.debian.org/debian/pool/main/t/tmux/tmux_2.3-4~bpo8+1_amd64.deb
-gnu_global_deb_link: https://launchpadlibrarian.net/325418261/global_6.5.7-1_amd64.deb
+gnu_global_deb_link: https://launchpad.net/ubuntu/+source/global/6.6.3-2/+build/16220205/+files/global_6.6.3-2_amd64.deb
 
 pyenv_plugins:
   - name: pyenv-virtualenv
