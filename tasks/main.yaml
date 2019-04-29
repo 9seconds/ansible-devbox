@@ -59,9 +59,6 @@
 - include: ./autojump.yaml
   tags: devbox-autojump
 
-- include: ./remote.yaml
-  tags: devbox-remote
-
 - include: ./pup.yaml
   tags: devbox-pup
 
