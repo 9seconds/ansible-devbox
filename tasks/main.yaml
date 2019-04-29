@@ -71,9 +71,6 @@
 - include: ./safedir.yaml
   tags: devbox-safedir
 
-- include: ./cortesi.yaml
-  tags: devbox-cortesi
-
 - include: ./mitmproxy.yaml
   tags: devbox-mitmproxy
 

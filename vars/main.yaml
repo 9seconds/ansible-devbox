@@ -194,8 +194,4 @@ devpi:
   host: 127.0.0.1
   main_index_name: main
 
-cortesi_tools:
-  modd: https://github.com/cortesi/modd/releases/download/v0.5/modd-0.5-linux64.tgz
-  devd: https://github.com/cortesi/devd/releases/download/v0.8/devd-0.8-linux64.tgz
-
 mitmproxy_port: 20202
