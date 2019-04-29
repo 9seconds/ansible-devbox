@@ -22,12 +22,12 @@ pyenv_pythons:
 - 2.7.15
 - 3.5.5
 - 3.6.6
-- 3.7.0
+- 3.7.3
 - pypy2.7-6.0.0
 - pypy3.5-6.0.0
 
 pyenv_python2: 2.7.15
-pyenv_python3: 3.7.0
+pyenv_python3: 3.7.3
 
 java_version: java11
 
