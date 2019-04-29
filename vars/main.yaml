@@ -162,7 +162,6 @@ pip3_packages:
   proselint: latest
   "python-language-server": latest
   rstcheck: latest
-  tldr: latest
   twine: latest
   yapf: latest
   "pip-tools": latest
@@ -192,5 +191,3 @@ devpi:
   nginx_port: 7101
   host: 127.0.0.1
   main_index_name: main
-
-mitmproxy_port: 20202

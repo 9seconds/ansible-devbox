@@ -68,8 +68,5 @@
 - include: ./safedir.yaml
   tags: devbox-safedir
 
-- include: ./mitmproxy.yaml
-  tags: devbox-mitmproxy
-
 - include: ./iterm2.yaml
   tags: devbox-iterm2
