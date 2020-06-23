@@ -1,193 +1,193 @@
 ---
-# vim: set ft=ansible:
-
-
-apt_packages_to_remove:
-  - puppet
-  - puppet-common
-  - chef
-  - chef-zero
-
-apt_mandatory_packages:
-  - apache2-utils
-  - apt-transport-https
-  - aria2
-  - autoconf
-  - autojump
-  - automake
-  - graphviz
-  - libgraphviz-dev
-  - build-essential
-  - ca-certificates
-  - ccache
-  - cmake
-  - cookiecutter
-  - curl
-  # it may looks like that it is silly to have docker-compose both
-  # in package and installed by pip. But unfortunately it has dependency
-  # on docker python interface which is broken. so there
-  - docker-compose
-  - expect
-  - exuberant-ctags
-  - g++
-  - gcc
-  - git
-  - global
-  - htop
-  - iftop
-  - iotop
-  - ipython
-  - ipython3
-  - jq
-  - keychain
-  - libapt-pkg-dev
-  - libbz2-dev
-  - libc-ares-dev
-  - libcurl4-gnutls-dev
-  - libffi-dev
-  - liblzma-dev
-  - libncurses5-dev
-  - libncursesw5-dev
-  - libreadline-dev
-  - libsqlite3-dev
-  - libssl-dev
-  - libtool
-  - libxml2-dev
-  - libxslt1-dev
-  - llvm
-  - locales
-  - ncurses-term
-  - nginx-extras
-  - openssh-client
-  - par
-  - pbzip2
-  - pigz
-  - pkg-config
-  - pxz
-  - python
-  - python-dev
-  - python-jedi
-  - python-pip
-  - python-pip-whl
-  - python-pygments
-  - python-setuptools
-  - python-virtualenv
-  - python-wheel
-  - python3
-  - python3-dev
-  - python3-jedi
-  - python3-pip
-  - python3-pygments
-  - python3-setuptools
-  - python3-virtualenv
-  - python3-wheel
-  - rsync
-  - ruby
-  - ruby-dev
-  - shellcheck
-  - siege
-  - silversearcher-ag
-  - software-properties-common
-  - sqlite3
-  - stow
-  - tar
-  - tig
-  - tmux
-  - tox
-  - unzip
-  - vim
-  - wget
-  - wget
-  - xz-utils
-  - yamllint
-  - zlib1g-dev
-  - zsh
-
-snap_mandatory_packages:
-  - go
-
-npm_mandatory_packages:
-  - eslint
-  - javascript-typescript-langserver
-  - markdownlint-cli
-  - sass-lint
-  - tern
-  - write-good
-  - vue-language-server
 
 locales:
   - en_US.UTF-8
   - ru_RU.UTF-8
 
-tmux_deb_link: http://ftp.hu.debian.org/debian/pool/main/t/tmux/tmux_2.3-4~bpo8+1_amd64.deb
-gnu_global_deb_link: https://launchpad.net/ubuntu/+source/global/6.6.3-2/+build/16220205/+files/global_6.6.3-2_amd64.deb
 
-pyenv_plugins:
-  - name: pyenv-virtualenv
-    repo: https://github.com/yyuu/pyenv-virtualenv.git
-  - name: pyenv-update
-    repo: https://github.com/yyuu/pyenv-update.git
-  - name: pyenv-doctor
-    repo: https://github.com/yyuu/pyenv-doctor.git
-  - name: pyenv-ccache
-    repo: https://github.com/yyuu/pyenv-ccache.git
-  - name: pyenv-which-ext
-    repo: https://github.com/yyuu/pyenv-which-ext.git
-  - name: pyenv-default-packages
-    repo: https://github.com/jawshooah/pyenv-default-packages.git
+# apt_packages_to_remove:
+#   - puppet
+#   - puppet-common
+#   - chef
+#   - chef-zero
 
-stow_dotfiles:
-  - ag
-  - aria2
-  - ctags
-  - git
-  - global
-  - httpie
-  - isort
-  - python
-  - scripts
-  - sqlite3
-  - tmux
-  - vim
-  - yapf
-  - zsh
+# apt_mandatory_packages:
+#   - apache2-utils
+#   - apt-transport-https
+#   - aria2
+#   - autoconf
+#   - autojump
+#   - automake
+#   - graphviz
+#   - libgraphviz-dev
+#   - build-essential
+#   - ca-certificates
+#   - ccache
+#   - cmake
+#   - cookiecutter
+#   - curl
+#   # it may looks like that it is silly to have docker-compose both
+#   # in package and installed by pip. But unfortunately it has dependency
+#   # on docker python interface which is broken. so there
+#   - docker-compose
+#   - expect
+#   - exuberant-ctags
+#   - g++
+#   - gcc
+#   - git
+#   - global
+#   - htop
+#   - iftop
+#   - iotop
+#   - ipython
+#   - ipython3
+#   - jq
+#   - keychain
+#   - libapt-pkg-dev
+#   - libbz2-dev
+#   - libc-ares-dev
+#   - libcurl4-gnutls-dev
+#   - libffi-dev
+#   - liblzma-dev
+#   - libncurses5-dev
+#   - libncursesw5-dev
+#   - libreadline-dev
+#   - libsqlite3-dev
+#   - libssl-dev
+#   - libtool
+#   - libxml2-dev
+#   - libxslt1-dev
+#   - llvm
+#   - locales
+#   - ncurses-term
+#   - nginx-extras
+#   - openssh-client
+#   - par
+#   - pbzip2
+#   - pigz
+#   - pkg-config
+#   - pxz
+#   - python
+#   - python-dev
+#   - python-jedi
+#   - python-pip
+#   - python-pip-whl
+#   - python-pygments
+#   - python-setuptools
+#   - python-virtualenv
+#   - python-wheel
+#   - python3
+#   - python3-dev
+#   - python3-jedi
+#   - python3-pip
+#   - python3-pygments
+#   - python3-setuptools
+#   - python3-virtualenv
+#   - python3-wheel
+#   - rsync
+#   - ruby
+#   - ruby-dev
+#   - shellcheck
+#   - siege
+#   - silversearcher-ag
+#   - software-properties-common
+#   - sqlite3
+#   - stow
+#   - tar
+#   - tig
+#   - tmux
+#   - tox
+#   - unzip
+#   - vim
+#   - wget
+#   - wget
+#   - xz-utils
+#   - yamllint
+#   - zlib1g-dev
+#   - zsh
 
-pip3_packages:
-  "httpie-http2": latest
-  httpie: latest
-  http-prompt: latest
-  icdiff: latest
-  isort: latest
-  mitmproxy: latest
-  proselint: latest
-  "python-language-server": latest
-  rstcheck: latest
-  twine: latest
-  yapf: latest
-  "pip-tools": latest
-  poetry: latest
-  pipenv: latest
+# snap_mandatory_packages:
+#   - go
 
-pip2_packages:
-  docker-compose: latest
-  "python-language-server": latest
-  tmuxp: latest
+# npm_mandatory_packages:
+#   - eslint
+#   - javascript-typescript-langserver
+#   - markdownlint-cli
+#   - sass-lint
+#   - tern
+#   - write-good
+#   - vue-language-server
 
-cargo_packages:
-  "cargo-update": cargo-install-update
-  bat: bat
-  ripgrep: rg
 
-restic:
-  url: https://github.com/restic/restic/releases/download/v0.8.3/restic_0.8.3_linux_amd64.bz2
-  backup_dir: /vagrant/backup
-  safe_dir: safe
+# tmux_deb_link: http://ftp.hu.debian.org/debian/pool/main/t/tmux/tmux_2.3-4~bpo8+1_amd64.deb
+# gnu_global_deb_link: https://launchpad.net/ubuntu/+source/global/6.6.3-2/+build/16220205/+files/global_6.6.3-2_amd64.deb
 
-pup_url: https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip
+# pyenv_plugins:
+#   - name: pyenv-virtualenv
+#     repo: https://github.com/yyuu/pyenv-virtualenv.git
+#   - name: pyenv-update
+#     repo: https://github.com/yyuu/pyenv-update.git
+#   - name: pyenv-doctor
+#     repo: https://github.com/yyuu/pyenv-doctor.git
+#   - name: pyenv-ccache
+#     repo: https://github.com/yyuu/pyenv-ccache.git
+#   - name: pyenv-which-ext
+#     repo: https://github.com/yyuu/pyenv-which-ext.git
+#   - name: pyenv-default-packages
+#     repo: https://github.com/jawshooah/pyenv-default-packages.git
 
-devpi:
-  dir: /var/lib/devpi
-  local_port: 7100
-  nginx_port: 7101
-  host: 127.0.0.1
-  main_index_name: main
+# stow_dotfiles:
+#   - ag
+#   - aria2
+#   - ctags
+#   - git
+#   - global
+#   - httpie
+#   - isort
+#   - python
+#   - scripts
+#   - sqlite3
+#   - tmux
+#   - vim
+#   - yapf
+#   - zsh
+
+# pip3_packages:
+#   "httpie-http2": latest
+#   httpie: latest
+#   http-prompt: latest
+#   icdiff: latest
+#   isort: latest
+#   mitmproxy: latest
+#   proselint: latest
+#   "python-language-server": latest
+#   rstcheck: latest
+#   twine: latest
+#   yapf: latest
+#   "pip-tools": latest
+#   poetry: latest
+#   pipenv: latest
+
+# pip2_packages:
+#   docker-compose: latest
+#   "python-language-server": latest
+#   tmuxp: latest
+
+# cargo_packages:
+#   "cargo-update": cargo-install-update
+#   bat: bat
+#   ripgrep: rg
+
+# restic:
+#   url: https://github.com/restic/restic/releases/download/v0.8.3/restic_0.8.3_linux_amd64.bz2
+#   backup_dir: /vagrant/backup
+#   safe_dir: safe
+
+# pup_url: https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip
+
+# devpi:
+#   dir: /var/lib/devpi
+#   local_port: 7100
+#   nginx_port: 7101
+#   host: 127.0.0.1
+#   main_index_name: main

@@ -3,6 +3,9 @@
 - include: ./ntp.yaml
   tags: devbox-ntp
 
+- include: ./locales.yaml
+  tags: devbox-locales
+
 # - include: ./apt.yaml
 #   tags: devbox-apt
 
@@ -10,8 +13,6 @@
 #   tags: devbox-snap
 
 
-# - include: ./locales.yaml
-#   tags: devbox-locales
 
 # - include: ./ssh.yaml
 #   tags: devbox-ssh
