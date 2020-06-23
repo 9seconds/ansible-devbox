@@ -1,16 +1,4 @@
 ---
-# vim: set ft=ansible:
-
-
-- name: apt autoremove
-  become: true
-  command: apt autoremove --yes --purge
-  listen: apt changed
-
-- name: apt clean
-  become: true
-  command: apt clean
-  listen: apt changed
 
 - name: restart timesyncd
   become: true
@@ -20,66 +8,77 @@
     state: restarted
     enabled: yes
 
-- name: restart docker
-  become: true
-  systemd:
-    daemon_reload: yes
-    name: docker
-    state: restarted
-    enabled: yes
+# - name: apt autoremove
+#   become: true
+#   command: apt autoremove --yes --purge
+#   listen: apt changed
 
-- name: docker system prune
-  become: true
-  command: docker system prune -f --volumes
-  args:
-    warn: no
-  listen: docker new images
+# - name: apt clean
+#   become: true
+#   command: apt clean
+#   listen: apt changed
 
-- name: assemble ssh config
-  assemble:
-    src: ~/.ssh/config.d
-    dest: ~/.ssh/config
-    delimiter: "\n\n"
-  listen: ssh config parts
 
-- name: remove old known_hosts files
-  file:
-    path: "~/.ssh/{{ item }}"
-    state: absent
-  with_items:
-    - known_hosts
-    - known_hosts.old
-  listen: ssh config parts
+# - name: restart docker
+#   become: true
+#   systemd:
+#     daemon_reload: yes
+#     name: docker
+#     state: restarted
+#     enabled: yes
 
-- name: add mandatory ssh hosts
-  shell: ssh-keyscan -T 10 -H {{ item | quote }} >> known_hosts
-  args:
-    chdir: ~/.ssh
-  with_items: "{{ known_ssh_hosts }}"
-  listen: ssh config parts
+# - name: docker system prune
+#   become: true
+#   command: docker system prune -f --volumes
+#   args:
+#     warn: no
+#   listen: docker new images
 
-- name: add hostnames from ssh config
-  shell: >
-    awk '/\s*HostName/ {print $2}' config
-    | sort -u
-    | xargs -r -n 1 ssh-keyscan -T 10 -H
-    >> known_hosts
-  args:
-    chdir: ~/.ssh
-  listen: ssh config parts
+# - name: assemble ssh config
+#   assemble:
+#     src: ~/.ssh/config.d
+#     dest: ~/.ssh/config
+#     delimiter: "\n\n"
+#   listen: ssh config parts
 
-- name: restart nginx
-  become: true
-  systemd:
-    daemon_reload: yes
-    name: nginx
-    state: restarted
-    enabled: yes
+# - name: remove old known_hosts files
+#   file:
+#     path: "~/.ssh/{{ item }}"
+#     state: absent
+#   with_items:
+#     - known_hosts
+#     - known_hosts.old
+#   listen: ssh config parts
 
-- name: restart devpi
-  become: true
-  systemd:
-    name: devpi.service
-    daemon_reload: yes
-    enabled: yes
-    state: restarted
+# - name: add mandatory ssh hosts
+#   shell: ssh-keyscan -T 10 -H {{ item | quote }} >> known_hosts
+#   args:
+#     chdir: ~/.ssh
+#   with_items: "{{ known_ssh_hosts }}"
+#   listen: ssh config parts
+
+# - name: add hostnames from ssh config
+#   shell: >
+#     awk '/\s*HostName/ {print $2}' config
+#     | sort -u
+#     | xargs -r -n 1 ssh-keyscan -T 10 -H
+#     >> known_hosts
+#   args:
+#     chdir: ~/.ssh
+#   listen: ssh config parts
+
+# - name: restart nginx
+#   become: true
+#   systemd:
+#     daemon_reload: yes
+#     name: nginx
+#     state: restarted
+#     enabled: yes
+
+# - name: restart devpi
+#   become: true
+#   systemd:
+#     name: devpi.service
+#     daemon_reload: yes
+#     enabled: yes
+#     state: restarted

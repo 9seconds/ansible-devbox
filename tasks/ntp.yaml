@@ -1,17 +1,4 @@
 ---
-# vim: set ft=ansible:
-
-- name: remove ntp
-  become: true
-  apt:
-    name:
-      - ntp
-      - ntpdate
-    state: absent
-    purge: yes
-    autoremove: yes
-  notify: apt changed
-  tags: packages
 
 - name: find out current timezone
   command: cat /etc/timezone
@@ -20,15 +7,15 @@
   register: etc_timezone
 
 - name: find out current ntp settings
-  shell: timedatectl status | grep -E ^NTP | cut -f3- -d" "
+  shell: timedatectl status | awk '/^\s+NTP/{print $3}'
   failed_when: false
   changed_when: false
   register: ntp_status
 
 - name: set timezone
   become: true
-  command: timedatectl set-timezone {{ ntp_timezone | quote }}
-  when: (etc_timezone is failed) or (etc_timezone.stdout | trim) != ntp_timezone
+  command: timedatectl set-timezone {{ ntp.timezone | quote }}
+  when: (etc_timezone is failed) or (etc_timezone.stdout | trim) != ntp.timezone
   notify: restart timesyncd
 
 - name: set ntp

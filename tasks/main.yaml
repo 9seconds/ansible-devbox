@@ -1,72 +1,71 @@
 ---
-# vim: set ft=ansible:
-
-
-- include: ./apt.yaml
-  tags: devbox-apt
-
-- include: ./snap.yaml
-  tags: devbox-snap
 
 - include: ./ntp.yaml
   tags: devbox-ntp
 
-- include: ./locales.yaml
-  tags: devbox-locales
+# - include: ./apt.yaml
+#   tags: devbox-apt
 
-- include: ./ssh.yaml
-  tags: devbox-ssh
+# - include: ./snap.yaml
+#   tags: devbox-snap
 
-- include: ./htop.yaml
-  tags: devbox-htop
 
-- include: ./pip.yaml
-  tags: devbox-pip
+# - include: ./locales.yaml
+#   tags: devbox-locales
 
-- include: ./docker.yaml
-  tags: devbox-docker
+# - include: ./ssh.yaml
+#   tags: devbox-ssh
 
-- include: ./nginx.yaml
-  tags: devbox-nginx
+# - include: ./htop.yaml
+#   tags: devbox-htop
 
-- include: ./devpi.yaml
-  tags: devbox-devpi
+# - include: ./pip.yaml
+#   tags: devbox-pip
 
-- include: ./dotfiles.yaml
-  tags: devbox-dotfiles
+# - include: ./docker.yaml
+#   tags: devbox-docker
 
-- include: ./tmux.yaml
-  tags: devbox-tmux
+# - include: ./nginx.yaml
+#   tags: devbox-nginx
 
-- include: ./shell.yaml
-  tags: devbox-shell
+# - include: ./devpi.yaml
+#   tags: devbox-devpi
 
-- include: ./fzf.yaml
-  tags: devbox-fzf
+# - include: ./dotfiles.yaml
+#   tags: devbox-dotfiles
 
-- include: ./nodejs.yaml
-  tags: devbox-nodejs
+# - include: ./tmux.yaml
+#   tags: devbox-tmux
 
-- include: ./java.yaml
-  tags: devbox-java
+# - include: ./shell.yaml
+#   tags: devbox-shell
 
-- include: ./pyenv.yaml
-  tags: devbox-pyenv
+# - include: ./fzf.yaml
+#   tags: devbox-fzf
 
-- include: ./neovim.yaml
-  tags: devbox-neovim
+# - include: ./nodejs.yaml
+#   tags: devbox-nodejs
 
-- include: ./autojump.yaml
-  tags: devbox-autojump
+# - include: ./java.yaml
+#   tags: devbox-java
 
-- include: ./pup.yaml
-  tags: devbox-pup
+# - include: ./pyenv.yaml
+#   tags: devbox-pyenv
 
-- include: ./rust.yaml
-  tags: devbox-rust
+# - include: ./neovim.yaml
+#   tags: devbox-neovim
 
-- include: ./safedir.yaml
-  tags: devbox-safedir
+# - include: ./autojump.yaml
+#   tags: devbox-autojump
 
-- include: ./iterm2.yaml
-  tags: devbox-iterm2
+# - include: ./pup.yaml
+#   tags: devbox-pup
+
+# - include: ./rust.yaml
+#   tags: devbox-rust
+
+# - include: ./safedir.yaml
+#   tags: devbox-safedir
+
+# - include: ./iterm2.yaml
+#   tags: devbox-iterm2
