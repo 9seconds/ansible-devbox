@@ -8,6 +8,39 @@
     state: restarted
     enabled: yes
 
+- name: assemble ssh config
+  assemble:
+    src: ~/.ssh/config.d
+    dest: ~/.ssh/config
+    delimiter: "\n\n"
+  listen: ssh config parts
+
+- name: remove old known_hosts files
+  file:
+    path: "~/.ssh/{{ item }}"
+    state: absent
+  with_items:
+    - known_hosts
+    - known_hosts.old
+  listen: ssh config parts
+
+- name: add mandatory ssh hosts
+  shell: ssh-keyscan -T 10 -H {{ item | quote }} >> known_hosts
+  args:
+    chdir: ~/.ssh
+  with_items: "{{ known_ssh_hosts }}"
+  listen: ssh config parts
+
+- name: add hostnames from ssh config
+  shell: >
+    awk '/\s*HostName/{print $2}' config
+    | sort -u
+    | xargs -r -n 1 ssh-keyscan -T 10 -H
+    >> known_hosts
+  args:
+    chdir: ~/.ssh
+  listen: ssh config parts
+
 # - name: apt autoremove
 #   become: true
 #   command: apt autoremove --yes --purge
@@ -34,38 +67,7 @@
 #     warn: no
 #   listen: docker new images
 
-# - name: assemble ssh config
-#   assemble:
-#     src: ~/.ssh/config.d
-#     dest: ~/.ssh/config
-#     delimiter: "\n\n"
-#   listen: ssh config parts
 
-# - name: remove old known_hosts files
-#   file:
-#     path: "~/.ssh/{{ item }}"
-#     state: absent
-#   with_items:
-#     - known_hosts
-#     - known_hosts.old
-#   listen: ssh config parts
-
-# - name: add mandatory ssh hosts
-#   shell: ssh-keyscan -T 10 -H {{ item | quote }} >> known_hosts
-#   args:
-#     chdir: ~/.ssh
-#   with_items: "{{ known_ssh_hosts }}"
-#   listen: ssh config parts
-
-# - name: add hostnames from ssh config
-#   shell: >
-#     awk '/\s*HostName/ {print $2}' config
-#     | sort -u
-#     | xargs -r -n 1 ssh-keyscan -T 10 -H
-#     >> known_hosts
-#   args:
-#     chdir: ~/.ssh
-#   listen: ssh config parts
 
 # - name: restart nginx
 #   become: true

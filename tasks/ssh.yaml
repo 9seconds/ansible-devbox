@@ -1,6 +1,4 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: create ssh config.d directory
   file:
@@ -13,7 +11,7 @@
     state: directory
 
 - name: find out the keys to copy
-  local_action: command find ~/.ssh -name 'id_*' -type f
+  local_action: command find ~/.ssh -depth 1 -name 'id_*' -type f
   register: ssh_key_paths
 
 - name: copy ssh keys from the local machine
@@ -33,3 +31,13 @@
     group: "{{ ansible_user }}"
     mode: 0644
   notify: ssh config parts
+
+- name: disable motd
+  become: true
+  lineinfile:
+    path: /etc/pam.d/sshd
+    regexp: "^{{ item }}"
+    state: absent
+  with_items:
+    - session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic
+    - session\s+optional\s+pam_motd.so noupdate

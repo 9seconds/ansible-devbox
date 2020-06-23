@@ -6,6 +6,9 @@
 - include: ./locales.yaml
   tags: devbox-locales
 
+- include: ./ssh.yaml
+  tags: devbox-ssh
+
 # - include: ./apt.yaml
 #   tags: devbox-apt
 
@@ -14,8 +17,6 @@
 
 
 
-# - include: ./ssh.yaml
-#   tags: devbox-ssh
 
 # - include: ./htop.yaml
 #   tags: devbox-htop
