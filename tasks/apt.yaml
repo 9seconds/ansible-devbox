@@ -1,6 +1,5 @@
 ---
 
-
 - name: copy sources.list
   become: true
   template:

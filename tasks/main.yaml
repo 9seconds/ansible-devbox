@@ -12,8 +12,8 @@
 - include: ./apt.yaml
   tags: devbox-apt
 
-# - include: ./snap.yaml
-#   tags: devbox-snap
+- include: ./snap.yaml
+  tags: devbox-snap
 
 
 

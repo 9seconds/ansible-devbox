@@ -58,9 +58,13 @@ apt_mandatory_packages:
   - zlib1g-dev
   - zsh
 
-# snap_mandatory_packages:
-#   - go
-#   - cookiecutter
+snap_mandatory_packages:
+  go:
+    classic: yes
+    channel: stable
+  cookiecutter:
+    classic: no
+    channel: edge
 
 # npm_mandatory_packages:
 #   - eslint
