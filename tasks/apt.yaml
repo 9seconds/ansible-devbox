@@ -1,5 +1,4 @@
 ---
-# vim: set ft=ansible:
 
 
 - name: copy sources.list
@@ -11,39 +10,11 @@
     group: root
     mode: 0644
 
-- name: remove apt packages
-  become: true
-  apt:
-    name: "{{ apt_packages_to_remove }}"
-    purge: yes
-    autoremove: yes
-    state: absent
-  notify: apt changed
-  tags: packages
-
-# - name: install HWE stack
-#   become: true
-#   apt:
-#     name: "linux-generic-hwe-{{ ansible_distribution_version }}"
-#     state: present
-#     update_cache: yes
-#   notify: apt changed
-#   tags: packages
-
-- name: upgrade apt packages
-  become: true
-  apt:
-    update_cache: yes
-    upgrade: full
-  notify: apt changed
-  tags:
-    - update
-    - packages
-
 - name: install mandatory packages
   become: true
   apt:
     name: "{{ apt_mandatory_packages }}"
+    update_cache: yes
     state: present
   notify: apt changed
   tags: packages
@@ -57,95 +28,3 @@
   with_dict:
     'APT::Periodic::Update-Package-Lists': 'APT::Periodic::Update-Package-Lists "0";'
     'APT::Periodic::Unattended-Upgrade': 'APT::Periodic::Unattended-Upgrade "0";'
-
-- name: find out tmux version
-  shell: tmux -V | cut -f2- -d " "
-  register: tmux_version
-  changed_when: false
-  tags:
-    - tmux
-    - packages
-
-- name: install tmux >= 2.1
-  become: true
-  apt:
-    deb: "{{ tmux_deb_link }}"
-    state: present
-  when: tmux_version.stdout is version_compare("2.2", "<")
-  notify: apt changed
-  tags:
-    - tmux
-    - packages
-
-- name: findout vim version
-  become: true
-  shell: >
-    apt-cache policy vim
-    | awk '/Installed/ {print $2}'
-    | sed 's?^.*:??g'
-  register: vim_version
-  changed_when: false
-  tags:
-    - vim8
-    - packages
-
-- name: add ppa for vim 8
-  become: true
-  apt_repository:
-    repo: ppa:jonathonf/vim
-    filename: vim8
-    state: present
-    update_cache: yes
-  when: vim_version.stdout is version_compare("8", "<=")
-  tags:
-    - vim8
-    - packages
-
-- name: update vim to vim >= 8
-  become: true
-  apt:
-    name: vim
-    state: latest
-  when: vim_version.stdout is version_compare("8", "<=")
-  tags:
-    - vim8
-    - packages
-
-- name: check if curl support http2
-  command: curl -I --http2 nghttp2.org
-  args:
-    warn: no
-  failed_when: false
-  changed_when: false
-  register: curl_result
-  tags:
-    - packages
-    - curl
-
-- name: install curl with http2
-  include: ./apt-curl.yaml
-  when: curl_result.rc != 0
-  tags:
-    - packages
-    - curl
-
-- name: get gnu global version
-  shell: gtags --version | head -n 1 | awk '{print $NF}'
-  register: gtags_version
-  tags:
-    - gnu_global
-    - packages
-
-- name: install gnu global with support of python
-  become: true
-  apt:
-    deb: "{{ gnu_global_deb_link }}"
-    state: present
-  when: gtags_version.stdout is version_compare("6.3.2", "<=")
-  tags:
-    - gnu_global
-    - packages
-
-- name: install universal ctags
-  include: ./apt-utags.yaml
-  tags: packages

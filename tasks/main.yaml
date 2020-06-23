@@ -9,8 +9,8 @@
 - include: ./ssh.yaml
   tags: devbox-ssh
 
-# - include: ./apt.yaml
-#   tags: devbox-apt
+- include: ./apt.yaml
+  tags: devbox-apt
 
 # - include: ./snap.yaml
 #   tags: devbox-snap
