@@ -17,6 +17,8 @@ known_ssh_hosts:
   - github.com
   - bitbucket.org
 
+nodejs_version: 12
+
 dotfiles_link: git@github.com:9seconds/dotfiles.git
 
 pyenv_pythons:

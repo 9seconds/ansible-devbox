@@ -15,17 +15,14 @@
 - include: ./snap.yaml
   tags: devbox-snap
 
+- include: ./nodejs.yaml
+  tags: devbox-nodejs
 
+- include: ./autojump.yaml
+  tags: devbox-autojump
 
-
-# - include: ./htop.yaml
-#   tags: devbox-htop
-
-# - include: ./pip.yaml
-#   tags: devbox-pip
-
-# - include: ./docker.yaml
-#   tags: devbox-docker
+- include: ./docker.yaml
+  tags: devbox-docker
 
 # - include: ./nginx.yaml
 #   tags: devbox-nginx

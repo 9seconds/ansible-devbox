@@ -66,16 +66,6 @@ snap_mandatory_packages:
     classic: no
     channel: edge
 
-# npm_mandatory_packages:
-#   - eslint
-#   - javascript-typescript-langserver
-#   - markdownlint-cli
-#   - sass-lint
-#   - tern
-#   - write-good
-#   - vue-language-server
-
-
 # pyenv_plugins:
 #   - name: pyenv-virtualenv
 #     repo: https://github.com/yyuu/pyenv-virtualenv.git
@@ -105,43 +95,3 @@ snap_mandatory_packages:
 #   - vim
 #   - yapf
 #   - zsh
-
-# pip3_packages:
-#   "httpie-http2": latest
-#   httpie: latest
-#   http-prompt: latest
-#   icdiff: latest
-#   isort: latest
-#   mitmproxy: latest
-#   proselint: latest
-#   "python-language-server": latest
-#   rstcheck: latest
-#   twine: latest
-#   yapf: latest
-#   "pip-tools": latest
-#   poetry: latest
-#   pipenv: latest
-
-# pip2_packages:
-#   docker-compose: latest
-#   "python-language-server": latest
-#   tmuxp: latest
-
-# cargo_packages:
-#   "cargo-update": cargo-install-update
-#   bat: bat
-#   ripgrep: rg
-
-# restic:
-#   url: https://github.com/restic/restic/releases/download/v0.8.3/restic_0.8.3_linux_amd64.bz2
-#   backup_dir: /vagrant/backup
-#   safe_dir: safe
-
-# pup_url: https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip
-
-# devpi:
-#   dir: /var/lib/devpi
-#   local_port: 7100
-#   nginx_port: 7101
-#   host: 127.0.0.1
-#   main_index_name: main

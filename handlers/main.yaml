@@ -51,36 +51,10 @@
   command: apt clean
   listen: apt changed
 
-
-# - name: restart docker
-#   become: true
-#   systemd:
-#     daemon_reload: yes
-#     name: docker
-#     state: restarted
-#     enabled: yes
-
-# - name: docker system prune
-#   become: true
-#   command: docker system prune -f --volumes
-#   args:
-#     warn: no
-#   listen: docker new images
-
-
-
-# - name: restart nginx
-#   become: true
-#   systemd:
-#     daemon_reload: yes
-#     name: nginx
-#     state: restarted
-#     enabled: yes
-
-# - name: restart devpi
-#   become: true
-#   systemd:
-#     name: devpi.service
-#     daemon_reload: yes
-#     enabled: yes
-#     state: restarted
+- name: restart docker
+  become: true
+  systemd:
+    daemon_reload: yes
+    name: docker
+    state: restarted
+    enabled: yes

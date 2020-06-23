@@ -1,6 +1,4 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: install shell integration for zsh
   shell: |

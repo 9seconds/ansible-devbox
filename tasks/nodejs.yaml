@@ -1,41 +1,23 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: add nodejs apt keys
   become: true
   apt_key:
-    url: "{{ item }}"
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
     state: present
-  with_items:
-    - https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    - https://dl.yarnpkg.com/debian/pubkey.gpg
-  tags: packages
 
 - name: add nodejs repositories
   become: true
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main
+    repo: deb https://deb.nodesource.com/node_{{ nodejs_version }}.x {{ ansible_distribution_release }} main
     filename: nodejs
     state: present
     update_cache: yes
-  tags: packages
-
-- name: add yarn repositories
-  become: true
-  apt_repository:
-    repo: deb https://dl.yarnpkg.com/debian/ stable main
-    state: present
-    filename: yarn
-    update_cache: yes
-  tags: packages
 
 - name: install nodejs
   become: true
   apt:
-    name:
-      - nodejs
-      - yarn
+    name: nodejs
     state: present
   notify: apt changed
   tags: packages
@@ -52,20 +34,3 @@
   file:
     path: "{{ ansible_user_dir }}/.node_prefix"
     state: directory
-
-- name: install npm packages
-  npm:
-    name: "{{ item }}"
-    state: latest
-    global: yes
-    registry: https://registry.npmjs.org/
-  with_items: "{{ npm_mandatory_packages }}"
-  tags: update
-
-- name: install eslintrc global config
-  template:
-    src: eslintrc.yml.j2
-    dest: ~/.eslintrc.yml
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: 0644
