@@ -1,5 +1,6 @@
 ---
 
+ntp_timezone: Europe/Moscow
 ntp:
   timezone: Europe/Moscow
   servers:

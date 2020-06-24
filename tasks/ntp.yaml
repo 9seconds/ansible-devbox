@@ -14,8 +14,8 @@
 
 - name: set timezone
   become: true
-  command: timedatectl set-timezone {{ ntp.timezone | quote }}
-  when: (etc_timezone is failed) or (etc_timezone.stdout | trim) != ntp.timezone
+  command: timedatectl set-timezone {{ ntp_timezone | quote }}
+  when: (etc_timezone is failed) or (etc_timezone.stdout | trim) != ntp_timezone
   notify: restart timesyncd
 
 - name: set ntp

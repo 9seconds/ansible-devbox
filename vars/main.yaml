@@ -78,3 +78,15 @@ pyenv:
       repo: https://github.com/yyuu/pyenv-ccache.git
     - name: pyenv-which-ext
       repo: https://github.com/yyuu/pyenv-which-ext.git
+
+ntp:
+  servers:
+    - 0.ru.pool.ntp.org
+    - 1.ru.pool.ntp.org
+    - 2.ru.pool.ntp.org
+    - 3.ru.pool.ntp.org
+  fallback_servers:
+    - 0.pool.ntp.org
+    - 1.pool.ntp.org
+    - 2.pool.ntp.org
+    - 3.pool.ntp.org
