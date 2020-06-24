@@ -36,20 +36,5 @@
 - include: ./pyenv.yaml
   tags: devbox-pyenv
 
-# - include: ./neovim.yaml
-#   tags: devbox-neovim
-
-# - include: ./autojump.yaml
-#   tags: devbox-autojump
-
-# - include: ./pup.yaml
-#   tags: devbox-pup
-
-# - include: ./rust.yaml
-#   tags: devbox-rust
-
-# - include: ./safedir.yaml
-#   tags: devbox-safedir
-
-# - include: ./iterm2.yaml
-#   tags: devbox-iterm2
+- include: ./neovim.yaml
+  tags: devbox-neovim

@@ -1,6 +1,4 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: add neovim repository
   become: true
@@ -16,14 +14,6 @@
     name: neovim
     state: present
   notify: apt changed
-  tags: packages
-
-- name: install support for ruby plugins
-  become: true
-  gem:
-    name: neovim
-    user_install: no
-    state: latest
 
 - name: create vim directories
   file:
@@ -80,4 +70,4 @@
     - PlugUpgrade
     - PlugUpdate
     - UpdateRemotePlugins
-  tags: update
+    - CocUpdateSync
