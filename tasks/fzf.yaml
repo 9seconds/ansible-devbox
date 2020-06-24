@@ -1,6 +1,4 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: clone fzf repository
   git:

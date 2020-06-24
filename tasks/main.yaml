@@ -30,26 +30,8 @@
 - include: ./shell.yaml
   tags: devbox-shell
 
-# - include: ./devpi.yaml
-#   tags: devbox-devpi
-
-# - include: ./dotfiles.yaml
-#   tags: devbox-dotfiles
-
-# - include: ./tmux.yaml
-#   tags: devbox-tmux
-
-# - include: ./shell.yaml
-#   tags: devbox-shell
-
-# - include: ./fzf.yaml
-#   tags: devbox-fzf
-
-# - include: ./nodejs.yaml
-#   tags: devbox-nodejs
-
-# - include: ./java.yaml
-#   tags: devbox-java
+- include: ./fzf.yaml
+  tags: devbox-fzf
 
 # - include: ./pyenv.yaml
 #   tags: devbox-pyenv
