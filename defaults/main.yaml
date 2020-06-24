@@ -19,7 +19,24 @@ known_ssh_hosts:
 
 nodejs_version: 12
 
-dotfiles_link: git@github.com:9seconds/dotfiles.git
+dotfiles:
+  url: git@github.com:9seconds/dotfiles.git
+  links:
+    ~/.agignore: ag/.agignore
+    ~/.ctagsrc: ctags/.ctagsrc
+    ~/.gitconfig: git/.gitconfig
+    ~/.globalrc: global/.globalrc
+    ~/.config/pip/pip.conf: pip/.config/pip/pip.conf
+    ~/.pdbrc: python/.pdbrc
+    ~/.pythonrc: python/.pythonrc
+    ~/.sqliterc: sqlite3/.sqliterc
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.vimrc: vim/.vimrc
+    ~/.config/nvim/init.vim: vim/.vimrc
+    ~/.config/nvim/coc-settings.json: vim/.config/nvim/coc-settings.json
+    ~/.ultisnips: vim/.ultisnips
+    ~/.zshrc: zsh/.zshrc
+    ~/.zsh: zsh/.zsh
 
 pyenv_pythons:
 - 2.7.15
@@ -31,12 +48,3 @@ pyenv_pythons:
 
 pyenv_python2: 2.7.15
 pyenv_python3: 3.7.3
-
-java_version: java11
-
-docker_bip: 10.201.0.2/24
-docker_storage_driver: overlay2
-
-mandatory_docker_images:
-- ubuntu:bionic
-- ubuntu:latest

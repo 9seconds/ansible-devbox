@@ -24,6 +24,9 @@
 - include: ./docker.yaml
   tags: devbox-docker
 
+- include: ./dotfiles.yaml
+  tags: devbox-dotfiles
+
 # - include: ./nginx.yaml
 #   tags: devbox-nginx
 

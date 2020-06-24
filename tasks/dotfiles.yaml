@@ -1,20 +1,29 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: clone dotfiles
   git:
     accept_hostkey: yes
     dest: ~/.dotfiles
-    repo: "{{ dotfiles_link }}"
-
-- name: stow dotfiles
-  command: stow -t ~ -R {{ item | quote }}
-  args:
-    chdir: ~/.dotfiles
-  with_items: "{{ stow_dotfiles }}"
+    repo: "{{ dotfiles.url }}"
 
 - name: install tmux terminal type
   command: tic ~/.dotfiles/tmux-italics.terminfo
   args:
     creates: /usr/share/terminfo/t/tmux-256color
+
+- name: get a list of directories to ensure
+  set_fact:
+    dotfiles_directories: "{{ dotfiles.links | dict2items | map(attribute='key') | map('dirname') | unique | list }}"
+
+- name: ensure dirctories are created
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ dotfiles_directories }}"
+
+- name: symlink dotfile
+  file:
+    src: "~/.dotfiles/{{ item.value }}"
+    dest: "{{ item.key }}"
+    state: link
+  with_dict: "{{ dotfiles.links }}"
