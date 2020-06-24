@@ -66,32 +66,15 @@ snap_mandatory_packages:
     classic: no
     channel: edge
 
-# pyenv_plugins:
-#   - name: pyenv-virtualenv
-#     repo: https://github.com/yyuu/pyenv-virtualenv.git
-#   - name: pyenv-update
-#     repo: https://github.com/yyuu/pyenv-update.git
-#   - name: pyenv-doctor
-#     repo: https://github.com/yyuu/pyenv-doctor.git
-#   - name: pyenv-ccache
-#     repo: https://github.com/yyuu/pyenv-ccache.git
-#   - name: pyenv-which-ext
-#     repo: https://github.com/yyuu/pyenv-which-ext.git
-#   - name: pyenv-default-packages
-#     repo: https://github.com/jawshooah/pyenv-default-packages.git
-
-# stow_dotfiles:
-#   - ag
-#   - aria2
-#   - ctags
-#   - git
-#   - global
-#   - httpie
-#   - isort
-#   - python
-#   - scripts
-#   - sqlite3
-#   - tmux
-#   - vim
-#   - yapf
-#   - zsh
+pyenv:
+  plugins:
+    - name: pyenv-virtualenv
+      repo: https://github.com/yyuu/pyenv-virtualenv.git
+    - name: pyenv-update
+      repo: https://github.com/yyuu/pyenv-update.git
+    - name: pyenv-doctor
+      repo: https://github.com/yyuu/pyenv-doctor.git
+    - name: pyenv-ccache
+      repo: https://github.com/yyuu/pyenv-ccache.git
+    - name: pyenv-which-ext
+      repo: https://github.com/yyuu/pyenv-which-ext.git

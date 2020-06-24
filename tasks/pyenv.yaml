@@ -1,43 +1,20 @@
 ---
-# vim: set ft=ansible:
-
 
 - name: clone pyenv
   git:
     repo: https://github.com/yyuu/pyenv.git
-    dest: "~{{ ansible_user }}/.pyenv"
+    dest: ~/.pyenv
     version: master
 
 - name: install pyenv plugins
   git:
     repo: "{{ item.repo }}"
-    dest: "~{{ ansible_user }}/.pyenv/plugins/{{ item.name }}"
+    dest: "~/.pyenv/plugins/{{ item.name }}"
     version: master
-  with_items: "{{ pyenv_plugins }}"
+  with_items: "{{ pyenv.plugins }}"
 
 - name: install pyenv pythons
-  command: /usr/bin/zsh -ic 'pyenv install {{ item | quote }}'
+  command: /usr/bin/zsh -ic 'pyenv install {{ item }}'
   args:
     creates: "~/.pyenv/versions/{{ item }}"
   with_items: "{{ pyenv_pythons }}"
-
-- name: install default packages
-  template:
-    src: default-packages.j2
-    dest: ~/.pyenv/default-packages
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: 0644
-
-- name: find out existing virtualenvs
-  command: /usr/bin/zsh -ic "pyenv virtualenvs --bare --skip-aliases"
-  register: virtualenvs
-  changed_when: false
-  tags: update
-
-- name: update virtualenvs
-  command: >
-    /usr/bin/zsh -ic
-    "pyenv activate {{ item | quote }} && pip install -U -r ~/.pyenv/default-packages"
-  with_items: "{{ virtualenvs.stdout_lines }}"
-  tags: update
