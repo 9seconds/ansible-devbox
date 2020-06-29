@@ -1,5 +1,8 @@
 ---
 
+- include: ./htop.yaml
+  tags: devbox-htop
+
 - include: ./ntp.yaml
   tags: devbox-ntp
 

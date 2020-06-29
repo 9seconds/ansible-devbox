@@ -1,0 +1,14 @@
+---
+
+- name: create htop config directory
+  file:
+    path: ~/.config/htop
+    state: directory
+
+- name: copy htoprc
+  copy:
+    src: htoprc
+    dest: ~/.config/htop/htoprc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
