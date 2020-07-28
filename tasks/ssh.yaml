@@ -41,3 +41,8 @@
   loop:
     - session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic
     - session\s+optional\s+pam_motd.so noupdate
+
+- name: disable fancy messages
+  file:
+    path: ~/.hushlogin
+    state: present
