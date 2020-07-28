@@ -6,6 +6,7 @@ locales:
 
 apt_mandatory_packages:
   - apt-transport-https
+  - apt-file
   - autoconf
   - autojump
   - automake
