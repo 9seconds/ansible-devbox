@@ -19,7 +19,7 @@
   file:
     path: "{{ item }}"
     state: directory
-  with_items:
+  loop:
     - ~/.vim/autoload
     - ~/.local/share/nvim/site/autoload
 
@@ -27,7 +27,7 @@
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ item }}"
-  with_items:
+  loop:
     - ~/.vim/autoload/plug.vim
     - ~/.local/share/nvim/site/autoload/plug.vim
 
@@ -37,9 +37,11 @@
     "pyenv virtualenv {{ item.value | quote }} {{ item.key | quote }}"
   args:
     creates: "~/.pyenv/versions/{{ item.key }}"
-  with_dict:
-    neovim2: "{{ pyenv_python2 }}"
-    neovim3: "{{ pyenv_python3 }}"
+  loop:
+    - key: neovim2
+      value: "{{ pyenv_python2 }}"
+    - key: neovim3
+      value: "{{ pyenv_python3 }}"
 
 - name: create directory for neovim pythons
   file:
@@ -51,7 +53,7 @@
     path: "~/.neovim_pythons/{{ item }}"
     src: "~/.pyenv/versions/neovim{{ item }}"
     state: link
-  with_items:
+  loop:
     - 2
     - 3
 
@@ -60,13 +62,13 @@
     name: pynvim
     state: latest
     virtualenv: "~/.pyenv/versions/{{ item }}"
-  with_items:
+  loop:
     - neovim2
     - neovim3
 
 - name: install neovim plugins
   command: nvim --headless -c {{ item | quote }} -c 'qall!'
-  with_items:
+  loop:
     - PlugUpgrade
     - PlugUpdate
     - UpdateRemotePlugins

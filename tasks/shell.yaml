@@ -8,7 +8,7 @@
 
 - name: update antigen
   command: /usr/bin/zsh -ic 'antigen {{ item | quote }}'
-  with_items:
+  loop:
     - update
     - cleanup
 

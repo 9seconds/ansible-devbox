@@ -21,7 +21,7 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0400
-  with_items: "{{ ssh_key_paths.stdout_lines }}"
+  loop: "{{ ssh_key_paths.stdout_lines }}"
 
 - name: copy common part of ssh config
   template:
@@ -38,6 +38,6 @@
     path: /etc/pam.d/sshd
     regexp: "^{{ item }}"
     state: absent
-  with_items:
+  loop:
     - session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic
     - session\s+optional\s+pam_motd.so noupdate

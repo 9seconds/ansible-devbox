@@ -19,11 +19,11 @@
   file:
     path: "{{ item }}"
     state: directory
-  with_items: "{{ dotfiles_directories }}"
+  loop: "{{ dotfiles_directories }}"
 
 - name: symlink dotfile
   file:
     src: "~/.dotfiles/{{ item.value }}"
     dest: "{{ item.key }}"
     state: link
-  with_dict: "{{ dotfiles.links }}"
+  loop: "{{ dotfiles.links | dict2items }}"

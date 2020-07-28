@@ -19,7 +19,7 @@
   file:
     path: "~/.ssh/{{ item }}"
     state: absent
-  with_items:
+  loop:
     - known_hosts
     - known_hosts.old
   listen: ssh config parts
@@ -28,7 +28,7 @@
   shell: ssh-keyscan -T 10 -H {{ item | quote }} >> known_hosts
   args:
     chdir: ~/.ssh
-  with_items: "{{ known_ssh_hosts }}"
+  loop: "{{ known_ssh_hosts }}"
   listen: ssh config parts
 
 - name: add hostnames from ssh config

@@ -11,10 +11,10 @@
     repo: "{{ item.repo }}"
     dest: "~/.pyenv/plugins/{{ item.name }}"
     version: master
-  with_items: "{{ pyenv.plugins }}"
+  loop: "{{ pyenv.plugins }}"
 
 - name: install pyenv pythons
   command: /usr/bin/zsh -ic 'pyenv install {{ item }}'
   args:
     creates: "~/.pyenv/versions/{{ item }}"
-  with_items: "{{ pyenv_pythons }}"
+  loop: "{{ pyenv_pythons }}"

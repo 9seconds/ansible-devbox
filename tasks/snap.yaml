@@ -6,4 +6,4 @@
     name: "{{ item.key }}"
     classic: "{{ item.value.classic }}"
     channel: "{{ item.value.channel }}"
-  with_dict: "{{ snap_mandatory_packages }}"
+  loop: "{{ snap_mandatory_packages | dict2items }}"
