@@ -79,6 +79,8 @@ pyenv:
       repo: https://github.com/yyuu/pyenv-ccache.git
     - name: pyenv-which-ext
       repo: https://github.com/yyuu/pyenv-which-ext.git
+    - name: pyenv-default-packages
+      repo: https://github.com/jawshooah/pyenv-default-packages
 
 ntp:
   servers:
