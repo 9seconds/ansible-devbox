@@ -18,3 +18,9 @@
     zsh
   args:
     warn: no
+
+- name: ensure zsh.private.d is created
+  file:
+    path: ~/zshrc.private.d
+    state: directory
+  notify: zsh config parts

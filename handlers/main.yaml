@@ -8,6 +8,12 @@
     state: restarted
     enabled: yes
 
+- name: zsh config parts
+  assemble:
+    src: ~/.zshrc.private.d
+    dest: ~/.zshrc.private
+    delimiter: "\n\n"
+
 - name: assemble ssh config
   assemble:
     src: ~/.ssh/config.d
