@@ -1,0 +1,8 @@
+---
+
+- name: ensure sysctl setting is present
+  become: true
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ sysctl_settings | dict2items }}"

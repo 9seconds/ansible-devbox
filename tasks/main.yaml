@@ -41,3 +41,6 @@
 
 - include: ./neovim.yaml
   tags: devbox-neovim
+
+- include: ./sysctl.yaml
+  tags: devbox-sysctl
