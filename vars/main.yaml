@@ -14,6 +14,7 @@ apt_mandatory_packages:
   - ca-certificates
   - ccache
   - cmake
+  - docker-compose
   - expect
   - fzf
   - g++
