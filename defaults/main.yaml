@@ -41,14 +41,14 @@ dotfiles:
 
 pyenv_pythons:
   - 2.7.18
-  - 3.6.10
-  - 3.7.7
-  - 3.8.3
+  - 3.6.11
+  - 3.7.8
+  - 3.8.5
   - pypy2.7-7.3.1
   - pypy3.6-7.3.1
 
 pyenv_python2: 2.7.18
-pyenv_python3: 3.8.3
+pyenv_python3: 3.8.5
 
 sysctl_settings:
   fs.inotify.max_user_watches: "524288"
