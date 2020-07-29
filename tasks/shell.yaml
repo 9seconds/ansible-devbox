@@ -19,8 +19,14 @@
   args:
     warn: no
 
-- name: ensure zsh.private.d is created
+- name: ensure zshrc.private.d is created
   file:
-    path: ~/zshrc.private.d
+    path: ~/.zshrc.private.d
     state: directory
   notify: zsh config parts
+
+- name: add zsh main chunk
+  template:
+    src: zsh-main.j2
+    dest: ~/.zshrc.private.d/99-main
+    mode: 0644

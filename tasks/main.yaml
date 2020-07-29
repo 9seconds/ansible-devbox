@@ -33,9 +33,6 @@
 - include: ./shell.yaml
   tags: devbox-shell
 
-- include: ./fzf.yaml
-  tags: devbox-fzf
-
 - include: ./pyenv.yaml
   tags: devbox-pyenv
 
