@@ -45,4 +45,4 @@
 - name: disable fancy messages
   file:
     path: ~/.hushlogin
-    state: present
+    state: touch
