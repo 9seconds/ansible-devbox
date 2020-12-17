@@ -60,6 +60,7 @@ apt_mandatory_packages:
   - unzip
   - zlib1g-dev
   - zsh
+  - fd-find
 
 snap_mandatory_packages:
   go:
