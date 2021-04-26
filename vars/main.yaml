@@ -15,6 +15,7 @@ apt_mandatory_packages:
   - ccache
   - cmake
   - docker-compose
+  - fish
   - fzf
   - g++
   - gcc
