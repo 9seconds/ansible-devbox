@@ -18,37 +18,33 @@ known_ssh_hosts:
   - github.com
   - bitbucket.org
 
-nodejs_version: 12
+nodejs_version: 14
 
 dotfiles:
   url: git@github.com:9seconds/dotfiles.git
   links:
     ~/.agignore: ag/.agignore
-    ~/.ctagsrc: ctags/.ctagsrc
     ~/.gitconfig: git/.gitconfig
-    ~/.globalrc: global/.globalrc
-    ~/.config/pip/pip.conf: pip/.config/pip/pip.conf
-    ~/.pdbrc: python/.pdbrc
     ~/.pythonrc: python/.pythonrc
-    ~/.sqliterc: sqlite3/.sqliterc
     ~/.tmux.conf: tmux/.tmux.conf
-    ~/.vimrc: vim/.vimrc
     ~/.config/nvim/init.vim: vim/.vimrc
     ~/.config/nvim/coc-settings.json: vim/.config/nvim/coc-settings.json
     ~/.ultisnips: vim/.ultisnips
-    ~/.zshrc: zsh/.zshrc
-    ~/.zsh: zsh/.zsh
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/fish_plugins: fish/fish_plugins
+    ~/.config/fish/config.fish.d: fish/configs
 
-pyenv_pythons:
-  - 2.7.18
-  - 3.6.11
-  - 3.7.8
-  - 3.8.5
-  - pypy2.7-7.3.1
-  - pypy3.6-7.3.1
-
-pyenv_python2: 2.7.18
-pyenv_python3: 3.8.5
+asdf_plugins:
+  - name: python
+    versions:
+    - latest:3
+    - 2.7.18
+  - name: golang
+    versions:
+    - latest:1
+  - name: nodejs
+    versions:
+    - latest:14
 
 sysctl_settings:
   fs.inotify.max_user_watches: "524288"

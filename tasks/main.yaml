@@ -15,14 +15,8 @@
 - include: ./apt.yaml
   tags: devbox-apt
 
-- include: ./snap.yaml
-  tags: devbox-snap
-
 - include: ./nodejs.yaml
   tags: devbox-nodejs
-
-- include: ./autojump.yaml
-  tags: devbox-autojump
 
 - include: ./docker.yaml
   tags: devbox-docker
@@ -30,14 +24,14 @@
 - include: ./dotfiles.yaml
   tags: devbox-dotfiles
 
-- include: ./shell.yaml
-  tags: devbox-shell
-
-- include: ./pyenv.yaml
-  tags: devbox-pyenv
+- include: ./asdf.yaml
+  tags: devbox-asdf
 
 - include: ./neovim.yaml
   tags: devbox-neovim
 
 - include: ./sysctl.yaml
   tags: devbox-sysctl
+
+- include: ./shell.yaml
+  tags: devbox-shell

@@ -3,7 +3,7 @@
 - name: add neovim repository
   become: true
   apt_repository:
-    repo: ppa:neovim-ppa/unstable
+    repo: ppa:neovim-ppa/stable
     state: present
     filename: neovim
     update_cache: yes
@@ -31,40 +31,31 @@
     - ~/.vim/autoload/plug.vim
     - ~/.local/share/nvim/site/autoload/plug.vim
 
-- name: create pyenvs for neovim
-  command: >
-    /usr/bin/zsh -ic
-    "pyenv virtualenv {{ item.value | quote }} {{ item.key | quote }}"
-  args:
-    creates: "~/.pyenv/versions/{{ item.key }}"
-  loop:
-    - key: neovim2
-      value: "{{ pyenv_python2 }}"
-    - key: neovim3
-      value: "{{ pyenv_python3 }}"
-
 - name: create directory for neovim pythons
   file:
     path: ~/.neovim_pythons
     state: directory
 
-- name: link pythons into neovim directories
-  file:
-    path: "~/.neovim_pythons/{{ item }}"
-    src: "~/.pyenv/versions/neovim{{ item }}"
-    state: link
-  loop:
-    - 2
-    - 3
+- name: create python2 env for neovim
+  command: >
+    bash -c 'source ~/.asdf/asdf.sh && virtualenv -p $(which python2) --download ~/.neovim_pythons/2'
+  args:
+    creates: "~/.neovim_pythons/2"
+
+- name: create python3 env for neovim
+  command: >
+    bash -c 'source ~/.asdf/asdf.sh && python3 -m venv ~/.neovim_pythons/3'
+  args:
+    creates: "~/.neovim_pythons/3"
 
 - name: install neovim package into pythons
   pip:
     name: pynvim
     state: latest
-    virtualenv: "~/.pyenv/versions/{{ item }}"
+    virtualenv: "~/.neovim_pythons/{{ item }}"
   loop:
-    - neovim2
-    - neovim3
+    - 2
+    - 3
 
 - name: install neovim plugins
   command: nvim --headless -c {{ item | quote }} -c 'qall!'

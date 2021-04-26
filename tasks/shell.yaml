@@ -4,29 +4,9 @@
   become: true
   user:
     name: "{{ ansible_user }}"
-    shell: /usr/bin/zsh
+    shell: /usr/bin/fish
 
-- name: update antigen
-  command: /usr/bin/zsh -ic 'antigen {{ item | quote }}'
-  loop:
-    - update
-    - cleanup
-
-- name: install iterm2 integration for zsh
-  shell: |
-    curl -sfL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh |
-    zsh
+- name: install fisher
+  command: fish -P -c 'curl -sL https://git.io/fisher | source; fisher update'
   args:
-    warn: no
-
-- name: ensure zshrc.private.d is created
-  file:
-    path: ~/.zshrc.private.d
-    state: directory
-  notify: zsh config parts
-
-- name: add zsh main chunk
-  template:
-    src: zsh-main.j2
-    dest: ~/.zshrc.private.d/99-main
-    mode: 0644
+    creates: ~/.config/fish/conf.d

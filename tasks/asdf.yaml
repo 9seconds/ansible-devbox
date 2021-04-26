@@ -1,0 +1,24 @@
+---
+
+- name: clone asdf
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: ~/.asdf
+    version: master
+
+- name: update asdf to the latest stable
+  command: bash -c 'source ~/.asdf/asdf.sh && asdf update'
+
+- name: install plugins
+  command: bash -c 'source ~/.asdf/asdf.sh && asdf plugin add {{ item.name | quote }}'
+  args:
+    creates: "~/.asdf/plugins/{{ item.name }}"
+  loop: "{{ asdf_plugins }}"
+
+- name: install asdf versions
+  command: bash -c 'source ~/.asdf/asdf.sh && asdf install {{ item.0.name | quote }} {{ item.1 | quote }}'
+  loop: "{{ asdf_plugins | subelements('versions', skip_missing=True) }}"
+
+- name: enable asdf versions
+  command: bash -c 'source ~/.asdf/asdf.sh && asdf global {{ item.name | quote }} $(asdf list {{ item.name | quote }} | sort -V | tr "\n" " ")'
+  loop: "{{ asdf_plugins }}"

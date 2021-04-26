@@ -1,9 +1,0 @@
----
-
-- name: install mandatory snaps
-  become: true
-  snap:
-    name: "{{ item.key }}"
-    classic: "{{ item.value.classic }}"
-    channel: "{{ item.value.channel }}"
-  loop: "{{ snap_mandatory_packages | dict2items }}"
